@@ -1,0 +1,4 @@
+Wordpress-Wabbr
+===============
+
+Awesome shortcodes
