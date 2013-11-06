@@ -80,7 +80,7 @@ class Wabbr
 	 */
 	function register_styles()
 	{		
-		wp_register_style( 'wabbr', WABBR_URL . '/assets/css/style.css', false, WABBR_VERSION, 'screen' );
+		wp_register_style( 'wabbr', WABBR_URL . 'assets/css/wabbr.css', false, WABBR_VERSION, 'screen' );
 	}
 
 	/**
@@ -104,7 +104,7 @@ class Wabbr
 	 */
 	function register_scripts()
 	{
-		wp_register_script( 'wabbr', WABBR_URL . '/assets/js/functions.js', null, WABBR_VERSION, true );
+		wp_register_script( 'wabbr', WABBR_URL . 'assets/js/wabbr.js', null, WABBR_VERSION, true );
 	}
 	
 	/**
