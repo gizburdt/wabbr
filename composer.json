@@ -1,0 +1,13 @@
+{
+    "name": "gizburdt/wabbr",
+    "type": "wordpress-plugin",
+    "description": "Awesome shortcodes",
+    "authors": [
+        {
+            "name": "Gizburdt",
+            "email": "gizburdt@gmail.com"
+        }
+    ],
+    "require": {
+    }
+}
