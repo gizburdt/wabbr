@@ -10,7 +10,7 @@ class Wabbr_Button extends Wabbr_Shortcode
 	function button( $atts, $content = null )
 	{
 		extract( shortcode_atts( array(
-			'class' 	=> 'button orange',
+			'class' 	=> 'btn',
 			'link'		=> '#',
 			'target'	=> ''
 		), $atts ) );

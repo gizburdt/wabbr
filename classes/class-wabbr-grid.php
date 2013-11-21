@@ -28,7 +28,7 @@ class Wabbr_Grid extends Wabbr_Shortcode
 			'class' 	=> '',
 		), $atts ) );
 
-		return '<div class="row wabbr wabbr-row' . $class . '">' . do_shortcode( $content ) . '</div>';
+		return '<div class="row wabbr wabbr-row ' . $class . '">' . do_shortcode( $content ) . '</div>';
 	}
 
 	function col( $atts, $content = null )
