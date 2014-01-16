@@ -52,6 +52,7 @@ class Wabbr
 		include( WABBR_DIR . 'classes/class-wabbr-shortcode.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-grid.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-button.php' );
+		include( WABBR_DIR . 'classes/class-wabbr-table.php' );
 	}
 
 	function add_hooks()
@@ -69,6 +70,7 @@ class Wabbr
 	{
 		$grid 		= new Wabbr_Grid();
 		$button 	= new Wabbr_Button();
+		$table 		= new Wabbr_Table();
 	}
 
 	/**
