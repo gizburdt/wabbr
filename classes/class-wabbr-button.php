@@ -15,6 +15,6 @@ class Wabbr_Button extends Wabbr_Shortcode
 			'target'	=> ''
 		), $atts ) );
 
-		return '<a class="wabbr-button ' . $class . '" href="' . $link . '" target="' . $target . '">' . do_shortcode( $content ) . '</a>';
+		return '<a class="wabbr-btn ' . $class . '" href="' . $link . '" target="' . $target . '">' . do_shortcode( $content ) . '</a>';
 	}
 }
