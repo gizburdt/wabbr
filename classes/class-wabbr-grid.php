@@ -65,6 +65,8 @@ class Wabbr_Grid extends Wabbr_Shortcode
 						$classes = array_merge( $classes, array( 'col-xs-12', 'col-sm-12', 'col-md-2', 'col-lg-2' ) ); break;
 					case '2/3' : case '4/6' : case '8/12' :
 						$classes = array_merge( $classes, array( 'col-xs-12', 'col-sm-12', 'col-md-8', 'col-lg-8' ) ); break;
+					case '3/4' : case '6/8' :
+						$classes = array_merge( $classes, array( 'col-xs-12', 'col-sm-12', 'col-md-9', 'col-lg-9' ) ); break;
 					default :
 						$classes = array_merge( $classes, array( 'col-xs-12', 'col-sm-12', 'col-md-12', 'col-lg-12' ) ); break;
 				endswitch;
