@@ -70,6 +70,7 @@ class Wabbr
 	function execute()
 	{
 		$grid 		= new Wabbr_Grid();
+		$menu 		= new Wabbr_Menu();
 		$button 	= new Wabbr_Button();
 		$table 		= new Wabbr_Table();
 	}
