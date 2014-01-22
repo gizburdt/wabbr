@@ -55,11 +55,11 @@ class Wabbr_Menu extends Wabbr_Shortcode
 	{
 		global $post;
 
-		$post = is_object( $post ) ? $post->ID : $post;
+		$parent = is_object( $post ) ? $post->ID : $post;
 
 		extract( shortcode_atts( array(
 			'authors'     		=> '',
-			'child_of'    		=> $post->ID,
+			'child_of'    		=> $parent,
 			'date_format' 		=> get_option('date_format'),
 			'depth'       		=> 0,
 			'echo'        		=> 1,
