@@ -58,6 +58,7 @@ class Wabbr_Menu extends Wabbr_Shortcode
 		$parent = is_object( $post ) ? $post->ID : $post;
 
 		extract( shortcode_atts( array(
+			'class'     		=> '',
 			'authors'     		=> '',
 			'child_of'    		=> $parent,
 			'date_format' 		=> get_option('date_format'),
@@ -71,13 +72,13 @@ class Wabbr_Menu extends Wabbr_Shortcode
 			'post_status' 		=> 'publish',
 			'show_date'   		=> '',
 			'sort_column' 		=> 'menu_order, post_title',
-			'title_li'    		=> __('Pages'), 
+			'title_li'    		=> '', 
 			'walker'      		=> ''
 		), $atts ) );
 
 		$walker = ! empty( $walker ) ? new $walker : '';
 
-		return wp_list_pages( array(
+		return '<div class="wabbr-submenu "' . $class . '">' . wp_list_pages( array(
 			'authors'     		=> $authors,
 			'child_of'    		=> $child_of,
 			'date_format' 		=> $date_format,
@@ -93,6 +94,6 @@ class Wabbr_Menu extends Wabbr_Shortcode
 			'sort_column' 		=> $sort_column,
 			'title_li'    		=> $title_li,
 			'walker'      		=> $walker,
-		) );
+		) ) . '</div>';
 	}
 }
