@@ -77,7 +77,7 @@ class Wabbr_Menu extends Wabbr_Shortcode
 
 		$walker = ! empty( $walker ) ? new $walker : '';
 
-		return wp_nav_menu( array(
+		return wp_list_pages( array(
 			'authors'     		=> $authors,
 			'child_of'    		=> $child_of,
 			'date_format' 		=> $date_format,
