@@ -78,7 +78,7 @@ class Wabbr_Menu extends Wabbr_Shortcode
 
 		$walker = ! empty( $walker ) ? new $walker : '';
 
-		return '<div class="wabbr-submenu "' . $class . '">' . wp_list_pages( array(
+		return '<ul class="wabbr-submenu ' . $class . '">' . wp_list_pages( array(
 			'authors'     		=> $authors,
 			'child_of'    		=> $child_of,
 			'date_format' 		=> $date_format,
@@ -94,6 +94,6 @@ class Wabbr_Menu extends Wabbr_Shortcode
 			'sort_column' 		=> $sort_column,
 			'title_li'    		=> $title_li,
 			'walker'      		=> $walker,
-		) ) . '</div>';
+		) ) . '</ul>';
 	}
 }
