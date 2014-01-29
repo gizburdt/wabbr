@@ -30,6 +30,7 @@ class Wabbr
 			self::$instance->includes();
 			self::$instance->add_hooks();
 			self::$instance->execute();
+			self::$instance->options();
 		}
 		
 		return self::$instance;
@@ -52,8 +53,10 @@ class Wabbr
 		include( WABBR_DIR . 'classes/class-wabbr-shortcode.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-grid.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-menu.php' );
+		include( WABBR_DIR . 'classes/class-wabbr-posts.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-button.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-table.php' );
+		include( WABBR_DIR . 'classes/class-wabbr-gmaps.php' );
 	}
 
 	function add_hooks()
@@ -69,58 +72,41 @@ class Wabbr
 
 	function execute()
 	{
-		$grid 		= new Wabbr_Grid();
-		$menu 		= new Wabbr_Menu();
-		$button 	= new Wabbr_Button();
-		$table 		= new Wabbr_Table();
+		self::$instance->grid  		= new Wabbr_Grid;
+		self::$instance->menu 		= new Wabbr_Menu;
+		self::$instance->posts 		= new Wabbr_Posts;
+		self::$instance->button 	= new Wabbr_Button;
+		self::$instance->table 		= new Wabbr_Table;
+		self::$instance->gmaps 		= new Wabbr_Gmaps;
 	}
 
-	/**
-	 * Registers styles
-	 *
-	 * @author 	Gijs Jorissen
-	 * @since 	0.3
-	 *
-	 */
+	function options()
+	{
+		self::$instance->gmaps->key = '';
+	}
+
 	function register_styles()
 	{		
 		wp_register_style( 'wabbr', WABBR_URL . 'assets/css/wabbr.css', false, WABBR_VERSION, 'screen' );
 	}
 
-	/**
-	 * Enqueues styles
-	 *
-	 * @author 	Gijs Jorissen
-	 * @since 	0.3
-	 *
-	 */
 	function enqueue_styles()
 	{
 		wp_enqueue_style( 'wabbr' );
 	}
 
-	/**
-	 * Registers scripts
-	 *
-	 * @author 	Gijs Jorissen
-	 * @since 	0.3
-	 *
-	 */
 	function register_scripts()
 	{
-		wp_register_script( 'wabbr', WABBR_URL . 'assets/js/wabbr.js', null, WABBR_VERSION, true );
+		wp_register_script( 'wabbr', WABBR_URL . 'assets/js/wabbr.js', null, WABBR_VERSION );
+
+		if( ! empty( self::$instance->gmaps->key ) && $key = self::$instance->gmaps->key )
+			wp_register_script( 'wabbr-gmaps', 'https://maps.googleapis.com/maps/api/js?key=' . $key . '&sensor=true', false, WABBR_VERSION, 'screen' );
 	}
 	
-	/**
-	 * Enqueues scripts
-	 *
-	 * @author 	Gijs Jorissen
-	 * @since 	0.3
-	 *
-	 */
 	function enqueue_scripts()
 	{
 		wp_enqueue_script( 'wabbr' );
+		wp_enqueue_script( 'wabbr-gmaps' );
 		
 		self::localize_scripts();
 	}
