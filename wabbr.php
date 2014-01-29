@@ -3,7 +3,7 @@
 /*
 Plugin Name: 	Wabbr
 Plugin URI: 	http://github.com/gizburdt
-Description: 	Easy and flexible shortcodes
+Description: 	Awesome shortcodes!
 Version: 		0.1
 Author: 		Gizburdt
 Author URI: 	http://gizburdt.com
