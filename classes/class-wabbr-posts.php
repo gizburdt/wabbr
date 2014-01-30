@@ -52,7 +52,7 @@ class Wabbr_Posts extends Wabbr_Shortcode
 		) );
 
 		// Col width
-		if( if( preg_match( '/^[0-9]{1,2}\/[0-9]{1,2}$/', $columns ) ) )
+		if( preg_match( '/^[0-9]{1,2}\/[0-9]{1,2}$/', $columns ) )
 			$col = Wabbr_Grid::_convert_sizes( $columns );
 		else {
 			$col = 12 / $columns;
