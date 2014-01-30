@@ -78,6 +78,8 @@ class Wabbr_Posts extends Wabbr_Shortcode
 		extract( shortcode_atts( array(
 			'class'				=> '',
 			'show_thumbnail'	=> true,
+			'thumbnail_size'	=> 'medium',
+			'thumbnail_class'	=> 'img-responsive',
 
 			// get_posts variables
 			'post_type' 		=> isset( $post ) ? $post->post_type : '',
@@ -115,13 +117,16 @@ class Wabbr_Posts extends Wabbr_Shortcode
 
 		ob_start();
 
-		if( $posts->have_posts() ) 
+		if ( $posts->have_posts() ) 
 		{
-			echo '<div class="wabbr wabbr-related-posts ' . $class . '">';
+			echo '<div class="wabbr wabbr-recent-posts ' . $class . '">';
 				while ( $posts->have_posts() ) : $posts->the_post();
+					
+					echo '<div class="' . implode( ' ', get_post_class('wabbr-post') ) . '">';
+						if( $show_thumbnail )
+							echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '" class="wabbr-post-link">' . get_the_post_thumbnail( get_the_ID(), $thumbnail_size, array( 'class' => 'wabbr-post-img ' . $thumbnail_class ) ) . '</a>';
 
-					echo '<div class="' . get_post_class('wabbr-post') . '">';
-
+						echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '" class="wabbr-post-link">' . get_the_title() . '</a>';
 					echo '</div>';
 
 				endwhile;
