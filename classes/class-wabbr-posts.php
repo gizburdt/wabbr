@@ -15,7 +15,6 @@ class Wabbr_Posts extends Wabbr_Shortcode
 			'show_thumbnail'	=> true,
 			'thumbnail_size'	=> 'medium',
 			'thumbnail_class'	=> 'img-responsive',
-			'columns' 			=> 3,
 
 			// get_posts variables
 			'post_type' 		=> '',
@@ -51,22 +50,14 @@ class Wabbr_Posts extends Wabbr_Shortcode
 			'suppress_filters' 	=> $suppress_filters
 		) );
 
-		// Col width
-		if( preg_match( '/^[0-9]{1,2}\/[0-9]{1,2}$/', $columns ) )
-			$col = Wabbr_Grid::_convert_sizes( $columns );
-		else {
-			$col = 12 / $columns;
-			$col = '1/' . $col;
-		}
-
 		ob_start();
 
 		if ( $posts->have_posts() ) 
 		{
-			echo '<div class="wabbr wabbr-recent-posts ' . $class . ' wabbr-columns-' . $columns . '">';
+			echo '<div class="wabbr wabbr-recent-posts ' . $class . '">';
 				while ( $posts->have_posts() ) : $posts->the_post();
 					
-					echo '<div class="' . implode( ' ', get_post_class('wabbr-post') ) . ' ' . $col . '">';
+					echo '<div class="' . implode( ' ', get_post_class('wabbr-post') ) . '">';
 						if( $show_thumbnail )
 							echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '" class="wabbr-post-link">' . get_the_post_thumbnail( get_the_ID(), $thumbnail_size, array( 'class' => 'wabbr-post-img ' . $thumbnail_class ) ) . '</a>';
 
