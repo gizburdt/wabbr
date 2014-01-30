@@ -119,7 +119,7 @@ class Wabbr_Posts extends Wabbr_Shortcode
 
 		if ( $posts->have_posts() ) 
 		{
-			echo '<div class="wabbr wabbr-recent-posts ' . $class . '">';
+			echo '<div class="wabbr wabbr-related-posts ' . $class . '">';
 				while ( $posts->have_posts() ) : $posts->the_post();
 					
 					echo '<div class="' . implode( ' ', get_post_class('wabbr-post') ) . '">';
