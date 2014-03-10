@@ -62,7 +62,7 @@ class Wabbr_Menu extends Wabbr_Shortcode
 			'authors'     		=> '',
 			'child_of'    		=> $parent,
 			'date_format' 		=> get_option('date_format'),
-			'depth'       		=> 0,
+			'depth'       		=> 1,
 			'echo'        		=> 0,
 			'exclude'     		=> '',
 			'include'     		=> '',
