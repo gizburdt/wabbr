@@ -54,6 +54,7 @@ class Wabbr
 		include( WABBR_DIR . 'classes/class-wabbr-grid.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-menu.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-posts.php' );
+		include( WABBR_DIR . 'classes/class-wabbr-text.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-button.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-table.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-gmaps.php' );
@@ -75,6 +76,7 @@ class Wabbr
 		self::$instance->grid  		= new Wabbr_Grid;
 		self::$instance->menu 		= new Wabbr_Menu;
 		self::$instance->posts 		= new Wabbr_Posts;
+		self::$instance->text 		= new Wabbr_Text;
 		self::$instance->button 	= new Wabbr_Button;
 		self::$instance->table 		= new Wabbr_Table;
 		self::$instance->gmaps 		= new Wabbr_Gmaps;
