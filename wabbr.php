@@ -57,6 +57,7 @@ class Wabbr
 		include( WABBR_DIR . 'classes/class-wabbr-text.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-button.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-table.php' );
+		include( WABBR_DIR . 'classes/class-wabbr-sidebar.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-gmaps.php' );
 	}
 
@@ -79,6 +80,7 @@ class Wabbr
 		self::$instance->text 		= new Wabbr_Text;
 		self::$instance->button 	= new Wabbr_Button;
 		self::$instance->table 		= new Wabbr_Table;
+		self::$instance->table 		= new Wabbr_Sidebar;
 		self::$instance->gmaps 		= new Wabbr_Gmaps;
 	}
 
