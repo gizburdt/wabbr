@@ -15,7 +15,7 @@ class Wabbr_Sidebar extends Wabbr_Shortcode
       	), $atts ) );
       	ob_start();
 
-      	echo '<div class="dynamic-sidebar wabbr-sidebar' . $class . '">';
+      	echo '<div class="dynamic-sidebar wabbr-sidebar ' . $class . '">';
       		echo '<ul>';
       			dynamic_sidebar( $name );
       		echo '</ul>';
