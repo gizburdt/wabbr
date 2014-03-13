@@ -19,7 +19,7 @@ class Wabbr_Table extends Wabbr_Shortcode
 		), $atts ) );
 		ob_start();
 
-		if( $responsive ) echo '<div class="table-responsive">';
+		if( $responsive ) echo '<div class="table-responsive wabbr-table-responsive">';
 			echo '<table class="table wabbr wabbr-table ' . $class . '">' . do_shortcode( $content ) . '</table>';
 		if( $responsive ) echo '</div>';
 
