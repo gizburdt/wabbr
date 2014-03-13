@@ -7,7 +7,7 @@ class Wabbr_Sidebar extends Wabbr_Shortcode
 		add_shortcode( 'sidebar', 		array( &$this, 'sidebar' ) );
 	}
 
-	function sidebar(  )
+	function sidebar( $atts, $content = null )
 	{
 		extract( shortcode_atts( array(
       		'name' 		=> '',
