@@ -42,7 +42,7 @@ class Wabbr_Grid extends Wabbr_Shortcode
 		$size 	= $this->_convert_sizes( $size );
 
 		// Output
-		return '<div class="' . $size . ' ' . $class . '">' . do_shortcode( $content ) . '</div>';
+		return '<div class="wabbr-col ' . $size . ' ' . $class . '">' . do_shortcode( $content ) . '</div>';
 	}
 
 	private function _convert_sizes( $size )
@@ -77,7 +77,7 @@ class Wabbr_Grid extends Wabbr_Shortcode
 			}
 		}
 
-		$class = apply_filters( 'wabbr_col_class', $classes, $size );
+		$class = apply_filters( 'wabbr_col_class', $size, $classes );
 		$class = is_array( $class ) ? implode( ' ', $class ) : $class;
 
 		return $class;
