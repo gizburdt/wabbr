@@ -77,7 +77,7 @@ class Wabbr_Grid extends Wabbr_Shortcode
 			}
 		}
 
-		$class = apply_filters( 'wabbr_col_class', $size, $classes );
+		$class = apply_filters( 'wabbr_col_class', $classes, $size );
 		$class = is_array( $class ) ? implode( ' ', $class ) : $class;
 
 		return $class;
