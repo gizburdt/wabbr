@@ -12,7 +12,7 @@ class Wabbr_Menu extends Wabbr_Shortcode
 	{
 		extract( shortcode_atts( array(
 			'theme_location'  	=> '',
-			'menu'            	=> '',
+			'name'            	=> '',
 			'container'       	=> 'div',
 			'container_class' 	=> 'wabbr-menu',
 			'container_id'    	=> '',
@@ -33,7 +33,7 @@ class Wabbr_Menu extends Wabbr_Shortcode
 
 		return wp_nav_menu( array(
 			'theme_location'  	=> $theme_location,
-			'menu'            	=> $menu,
+			'menu'            	=> $name,
 			'container'       	=> $container,
 			'container_class' 	=> $container_class,
 			'container_id'    	=> $container_id,
