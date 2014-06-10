@@ -51,13 +51,18 @@ class Wabbr
 	function includes()
 	{
 		include( WABBR_DIR . 'classes/class-wabbr-shortcode.php' );
-		include( WABBR_DIR . 'classes/class-wabbr-grid.php' );
+
+		// Wordpress
 		include( WABBR_DIR . 'classes/class-wabbr-menu.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-posts.php' );
-		include( WABBR_DIR . 'classes/class-wabbr-text.php' );
-		include( WABBR_DIR . 'classes/class-wabbr-button.php' );
-		include( WABBR_DIR . 'classes/class-wabbr-table.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-sidebar.php' );
+
+		// HTML
+		include( WABBR_DIR . 'classes/class-wabbr-components.php' );
+		include( WABBR_DIR . 'classes/class-wabbr-grid.php' );
+		include( WABBR_DIR . 'classes/class-wabbr-button.php' );
+		include( WABBR_DIR . 'classes/class-wabbr-text.php' );
+		include( WABBR_DIR . 'classes/class-wabbr-table.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-gmaps.php' );
 	}
 
