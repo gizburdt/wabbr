@@ -29,7 +29,7 @@ class Wabbr_Button extends Wabbr_Shortcode
 			'target'	=> ''
 		), $atts ) );
 
-		return do_shortcode( '[button class="btn-primary ' . $class . '"]' . $content . '[/button]' );
+		return do_shortcode( '[button class="btn-primary ' . $class . '" link="' . $link . '" target="' . $target . '"]' . $content . '[/button]' );
 	}
 
 	function button_secondary( $atts, $content = null )
@@ -40,7 +40,7 @@ class Wabbr_Button extends Wabbr_Shortcode
 			'target'	=> ''
 		), $atts ) );
 
-		return do_shortcode( '[button class="btn-secondary ' . $class . '"]' . $content . '[/button]' );
+		return do_shortcode( '[button class="btn-secondary ' . $class . '" link="' . $link . '" target="' . $target . '"]' . $content . '[/button]' );
 	}
 
 	function button_tertiary( $atts, $content = null )
@@ -51,6 +51,6 @@ class Wabbr_Button extends Wabbr_Shortcode
 			'target'	=> ''
 		), $atts ) );
 
-		return do_shortcode( '[button class="btn-tertiary ' . $class . '"]' . $content . '[/button]' );
+		return do_shortcode( '[button class="btn-tertiary ' . $class . '" link="' . $link . '" target="' . $target . '"]' . $content . '[/button]' );
 	}
 }
