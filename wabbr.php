@@ -79,13 +79,17 @@ class Wabbr
 
 	function execute()
 	{
-		self::$instance->grid  		= new Wabbr_Grid;
+		// Wordpress
 		self::$instance->menu 		= new Wabbr_Menu;
 		self::$instance->posts 		= new Wabbr_Posts;
+		self::$instance->table 		= new Wabbr_Sidebar;
+
+		// HTML
+		self::$instance->components	= new Wabbr_Components;
+		self::$instance->grid  		= new Wabbr_Grid;
 		self::$instance->text 		= new Wabbr_Text;
 		self::$instance->button 	= new Wabbr_Button;
 		self::$instance->table 		= new Wabbr_Table;
-		self::$instance->table 		= new Wabbr_Sidebar;
 		self::$instance->gmaps 		= new Wabbr_Gmaps;
 	}
 
