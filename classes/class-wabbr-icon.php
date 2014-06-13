@@ -22,7 +22,7 @@ class Wabbr_Icon extends Wabbr_Shortcode
 		extract( shortcode_atts( array(
 			'class' 	=> '',
 			'country'	=> '',
-			'ratio'		=> apply_filters( 'wabbr_flag_ration', 'normal' )
+			'ratio'		=> apply_filters( 'wabbr_flag_ratio', 'normal' )
 		), $atts ) );
 
 		$country 	= 'flag-icon-' . strtolower( $country );
