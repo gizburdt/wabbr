@@ -4,7 +4,17 @@ class Wabbr_Text extends Wabbr_Shortcode
 {
 	function add_shortcodes()
 	{
+		add_shortcode( 'hr', 		array( &$this, 'hr' ) );
 		add_shortcode( 'lead', 		array( &$this, 'lead' ) );
+	}
+
+	function hr( $atts, $content = null )
+	{
+		extract( shortcode_atts( array(
+			'class' 	=> '',
+		), $atts ) );
+
+		return '<hr class="lead ' . $class . '"></hr>';
 	}
 
 	function lead( $atts, $content = null )
