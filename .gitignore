@@ -1,0 +1,22 @@
+# Crap
+.DS_Store
+.log
+
+# Composer
+composer.lock
+composer.phar
+
+# Node
+node_modules
+
+# Codekit
+codekit-config.json
+config.codekit
+.codekit-cache
+
+# Editors
+*.sublime-project
+*.sublime-workspace
+*.idea
+.idea
+.idea/*
