@@ -102,7 +102,7 @@ class Wabbr
 
 	function register_styles()
 	{		
-		wp_register_style( 'wabbr', WABBR_URL . 'assets/wabbr/css/wabbr.css', false, WABBR_VERSION, 'screen' );
+		wp_register_style( 'wabbr', WABBR_URL . 'assets/css/wabbr.css', false, WABBR_VERSION, 'screen' );
 	}
 
 	function enqueue_styles()
@@ -112,7 +112,7 @@ class Wabbr
 
 	function register_scripts()
 	{
-		wp_register_script( 'wabbr', WABBR_URL . 'assets/wabbr/js/wabbr.js', null, WABBR_VERSION );
+		wp_register_script( 'wabbr', WABBR_URL . 'assets/js/wabbr.js', null, WABBR_VERSION );
 
 		if( ! empty( self::$instance->gmaps->key ) && $key = self::$instance->gmaps->key )
 			wp_register_script( 'wabbr-gmaps', 'https://maps.googleapis.com/maps/api/js?key=' . $key . '&sensor=true', false, WABBR_VERSION, 'screen' );
