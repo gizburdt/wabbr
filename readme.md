@@ -2,7 +2,7 @@
 
 Wabbr contains some awesome shortcodes.
 
-**Version:** 0.1 
+**Version:** 0.1  
 **Requires:** 3.5
 
 ## Classes
