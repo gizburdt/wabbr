@@ -14,7 +14,7 @@ class Wabbr_Text extends Wabbr_Shortcode
 			'class' 	=> '',
 		), $atts ) );
 
-		return '<hr class="wabbr-hr ' . $class . '"></hr>';
+		return '<hr class="wabbr-hr ' . $class . '" />';
 	}
 
 	function lead( $atts, $content = null )
