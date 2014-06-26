@@ -65,6 +65,7 @@ class Wabbr
 		include( WABBR_DIR . 'classes/class-wabbr-text.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-table.php' );
 		include( WABBR_DIR . 'classes/class-wabbr-gmaps.php' );
+		include( WABBR_DIR . 'classes/class-wabbr-iframe.php' );
 	}
 
 	function add_hooks()
@@ -93,6 +94,7 @@ class Wabbr
 		self::$instance->button 	= new Wabbr_Icon;
 		self::$instance->table 		= new Wabbr_Table;
 		self::$instance->gmaps 		= new Wabbr_Gmaps;
+		self::$instance->iframe		= new Wabbr_Iframe;
 	}
 
 	function options()
