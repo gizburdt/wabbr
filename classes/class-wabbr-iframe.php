@@ -15,24 +15,13 @@ class Wabbr_Iframe extends Wabbr_Shortcode
 			'height' 		=> '480',
 			'scrolling' 	=> 'no',
 			'class' 		=> 'wabbr-iframe',
-			'frameborder' 	=> '0',
-			'params'		=> 1
+			'frameborder' 	=> '0'
 		), $atts );
-
-		// Get params from url
-		if( ( @$atts['params'] == '1' || @$atts['params'] == 1 ) ) {
-			if( $_GET != NULL ) {
-				$url = $atts['src'];
-				foreach( $_GET as $key => $value ) {
-					$url = add_query_var( $key, $value, $url );
-				}
-			}
-		}
 
 		ob_start(); ?>
 
-		<iframe 
-			src"<?php echo $atts['src']; ?>"
+		<iframe
+			src="<?php echo $atts['src']; ?>"
 			width="<?php echo $atts['width']; ?>"
 			height="<?php echo $atts['height']; ?>"
 			scrolling="<?php echo $atts['scrolling']; ?>"
