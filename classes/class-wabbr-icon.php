@@ -14,7 +14,7 @@ class Wabbr_Icon extends Wabbr_Shortcode
 			'class' 	=> '',
 		), $atts ) );
 
-		return '<i class="wabbr-icon icon"></i>';
+		return '<i class="wabbr-icon icon ' . $class . '"></i>';
 	}
 
 	function flag( $atts, $content = null )
@@ -28,6 +28,6 @@ class Wabbr_Icon extends Wabbr_Shortcode
 		$country 	= 'flag-icon-' . strtolower( $country );
 		$ratio 		= $ratio == 'squared' ? 'flag-icon-squared' : '';
 
-		return '<i class="wabbr-flag flag-icon ' . $country . ' ' . $ratio . '"></i>';
+		return '<i class="wabbr-flag flag-icon ' . $country . ' ' . $ratio . ' ' . $class . '"></i>';
 	}	
 }
