@@ -15,10 +15,12 @@ class Wabbr_Button extends Wabbr_Shortcode
 		extract( shortcode_atts( array(
 			'class' 	=> '',
 			'link'		=> '#',
-			'target'	=> ''
+			'target'	=> '',
+			'title'		=> '',
+			'disabled'	=> false
 		), $atts ) );
 
-		return '<a class="wabbr-btn btn ' . $class . '" href="' . $link . '" target="' . $target . '">' . do_shortcode( $content ) . '</a>';
+		return '<a class="wabbr-btn btn ' . $class . '" href="' . $link . '" target="' . $target . '" title="' . $title . '" ' . ( $disabled ? 'disabled="disabled"' : '' ) . '>' . do_shortcode( $content ) . '</a>';
 	}
 
 	function button_primary( $atts, $content = null )
