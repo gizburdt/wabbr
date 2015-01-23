@@ -14,7 +14,7 @@ class Wabbr_Components extends Wabbr_Shortcode
 			'class' 	=> '',
 		), $atts ) );
 
-		return '<div class="wabbr block ' . $class . '">' . do_shortcode( $content ) . '</div>';
+		return '<div class="wabbr-block ' . $class . '">' . do_shortcode( $content ) . '</div>';
 	}
 
 	function list_group( $atts, $content = null )
