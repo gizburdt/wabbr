@@ -2,49 +2,49 @@
 
 class Wabbr_Gmaps extends Wabbr_Shortcode
 {
-	function __construct()
-	{
-		parent::__construct();
-		
-		add_action( 'wp_head', array( &$this, 'wp_head' ) );
-	}
+    function __construct()
+    {
+        parent::__construct();
 
-	function wp_head()
-	{
-		global $post;
-		
-		if( isset( $post ) && isset( $post->post_content ) && has_shortcode( $post->post_content, 'gmaps' ) )
-		{
-			?><script type="text/javascript">
-				function initialize() {
-					var mapOptions = {
-						center: new google.maps.LatLng(-34.397, 150.644),
-						zoom: 8
-					};
-					var map = new google.maps.Map(document.getElementById("map-canvas"),
-						mapOptions);
-				}
-	      		google.maps.event.addDomListener(window, "load", initialize);
-	      	</script><?php
-	    }
-	}
+        add_action( 'wp_head', array( &$this, 'wp_head' ) );
+    }
 
-	function add_shortcodes()
-	{
-		add_shortcode( 'gmaps', 	array( &$this, 'gmaps' ) );
-	}
+    function wp_head()
+    {
+        global $post;
 
-	function gmaps( $atts, $content = null )
-	{
-		extract( shortcode_atts( array(
-			'key'		=> '',
-			'class' 	=> '',
-		), $atts ) );
+        if( isset( $post ) && isset( $post->post_content ) && has_shortcode( $post->post_content, 'gmaps' ) )
+        {
+            ?><script type="text/javascript">
+                function initialize() {
+                    var mapOptions = {
+                        center: new google.maps.LatLng(-34.397, 150.644),
+                        zoom: 8
+                    };
+                    var map = new google.maps.Map(document.getElementById("map-canvas"),
+                        mapOptions);
+                }
+                google.maps.event.addDomListener(window, "load", initialize);
+            </script><?php
+        }
+    }
 
-		ob_start();
+    function add_shortcodes()
+    {
+        add_shortcode( 'gmaps',     array( &$this, 'gmaps' ) );
+    }
 
-      	echo '<div id="map-canvas"/>';
+    function gmaps( $atts, $content = null )
+    {
+        extract( shortcode_atts( array(
+            'key'       => '',
+            'class'     => '',
+        ), $atts ) );
 
-    	$output = ob_get_clean(); return $output;
-	}
+        ob_start();
+
+        echo '<div id="map-canvas"/>';
+
+        $output = ob_get_clean(); return $output;
+    }
 }
