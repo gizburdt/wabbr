@@ -10,12 +10,14 @@ Author URI:     http://gizburdt.com
 License:        GPL2
 */
 
-if( ! defined( 'ABSPATH' ) ) exit;
+if (! defined('ABSPATH')) {
+    exit;
+}
 
-if( ! class_exists( 'Wabbr' ) ) :
+if (! class_exists('Wabbr')) :
 
 /**
- * Wabbr
+ * Wabbr.
  */
 class Wabbr
 {
@@ -33,9 +35,8 @@ class Wabbr
      */
     public static function instance()
     {
-        if ( ! isset( self::$instance ) )
-        {
-            self::$instance = new Wabbr;
+        if (! isset(self::$instance)) {
+            self::$instance = new self();
             self::$instance->setup_constants();
             self::$instance->includes();
             self::$instance->add_hooks();
@@ -49,80 +50,83 @@ class Wabbr
     /**
      * Setup constants.
      */
-    function setup_constants()
+    public function setup_constants()
     {
-        if( ! defined( 'WABBR_VERSION' ) )
-            define( 'WABBR_VERSION', '0.1' );
+        if (! defined('WABBR_VERSION')) {
+            define('WABBR_VERSION', '0.1');
+        }
 
-        if( ! defined( 'WABBR_DIR' ) )
-            define( 'WABBR_DIR', plugin_dir_path( __FILE__ ) );
+        if (! defined('WABBR_DIR')) {
+            define('WABBR_DIR', plugin_dir_path(__FILE__));
+        }
 
-        if( ! defined( 'WABBR_URL' ) )
-            define( 'WABBR_URL', plugin_dir_url( __FILE__ ) );
+        if (! defined('WABBR_URL')) {
+            define('WABBR_URL', plugin_dir_url(__FILE__));
+        }
     }
 
     /**
      * Includes.
      */
-    function includes()
+    public function includes()
     {
-        include( WABBR_DIR . 'classes/class-wabbr-shortcode.php' );
+        include WABBR_DIR.'classes/class-wabbr-shortcode.php';
 
         // Wordpress
-        include( WABBR_DIR . 'classes/class-wabbr-menu.php' );
-        include( WABBR_DIR . 'classes/class-wabbr-posts.php' );
-        include( WABBR_DIR . 'classes/class-wabbr-sidebar.php' );
+        include WABBR_DIR.'classes/class-wabbr-menu.php';
+        include WABBR_DIR.'classes/class-wabbr-posts.php';
+        include WABBR_DIR.'classes/class-wabbr-sidebar.php';
 
         // HTML
-        include( WABBR_DIR . 'classes/class-wabbr-components.php' );
-        include( WABBR_DIR . 'classes/class-wabbr-grid.php' );
-        include( WABBR_DIR . 'classes/class-wabbr-button.php' );
-        include( WABBR_DIR . 'classes/class-wabbr-icon.php' );
-        include( WABBR_DIR . 'classes/class-wabbr-text.php' );
-        include( WABBR_DIR . 'classes/class-wabbr-table.php' );
-        include( WABBR_DIR . 'classes/class-wabbr-gmaps.php' );
-        include( WABBR_DIR . 'classes/class-wabbr-iframe.php' );
+        include WABBR_DIR.'classes/class-wabbr-components.php';
+        include WABBR_DIR.'classes/class-wabbr-grid.php';
+        include WABBR_DIR.'classes/class-wabbr-button.php';
+        include WABBR_DIR.'classes/class-wabbr-icon.php';
+        include WABBR_DIR.'classes/class-wabbr-text.php';
+        include WABBR_DIR.'classes/class-wabbr-table.php';
+        include WABBR_DIR.'classes/class-wabbr-gmaps.php';
+        include WABBR_DIR.'classes/class-wabbr-iframe.php';
     }
 
     /**
-     * Add hooks
+     * Add hooks.
      */
-    function add_hooks()
+    public function add_hooks()
     {
         // Styles
-        add_action( 'wp_enqueue_scripts', array( &$this, 'register_styles' ) );
-        add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_styles' ) );
+        add_action('wp_enqueue_scripts', array(&$this, 'register_styles'));
+        add_action('wp_enqueue_scripts', array(&$this, 'enqueue_styles'));
 
         // Scripts
-        add_action( 'wp_enqueue_scripts', array( &$this, 'register_scripts' ) );
-        add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
+        add_action('wp_enqueue_scripts', array(&$this, 'register_scripts'));
+        add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
     }
 
     /**
      * Execute.
      */
-    function execute()
+    public function execute()
     {
         // Wordpress
-        self::$instance->menu       = new Wabbr_Menu;
-        self::$instance->posts      = new Wabbr_Posts;
-        self::$instance->table      = new Wabbr_Sidebar;
+        self::$instance->menu       = new Wabbr_Menu();
+        self::$instance->posts      = new Wabbr_Posts();
+        self::$instance->table      = new Wabbr_Sidebar();
 
         // HTML
-        self::$instance->components = new Wabbr_Components;
-        self::$instance->grid       = new Wabbr_Grid;
-        self::$instance->text       = new Wabbr_Text;
-        self::$instance->button     = new Wabbr_Button;
-        self::$instance->button     = new Wabbr_Icon;
-        self::$instance->table      = new Wabbr_Table;
-        self::$instance->gmaps      = new Wabbr_Gmaps;
-        self::$instance->iframe     = new Wabbr_Iframe;
+        self::$instance->components = new Wabbr_Components();
+        self::$instance->grid       = new Wabbr_Grid();
+        self::$instance->text       = new Wabbr_Text();
+        self::$instance->button     = new Wabbr_Button();
+        self::$instance->button     = new Wabbr_Icon();
+        self::$instance->table      = new Wabbr_Table();
+        self::$instance->gmaps      = new Wabbr_Gmaps();
+        self::$instance->iframe     = new Wabbr_Iframe();
     }
 
     /**
-     * Options
+     * Options.
      */
-    function options()
+    public function options()
     {
         self::$instance->gmaps->key = '';
     }
@@ -130,35 +134,35 @@ class Wabbr
     /**
      * Register styles.
      */
-    function register_styles()
+    public function register_styles()
     {
-        wp_register_style( 'wabbr', WABBR_URL . 'assets/css/wabbr.css', false, WABBR_VERSION, 'screen' );
+        wp_register_style('wabbr', WABBR_URL.'assets/css/wabbr.css', false, WABBR_VERSION, 'screen');
     }
 
     /**
      * Enqueue styles.
      */
-    function enqueue_styles()
+    public function enqueue_styles()
     {
-        wp_enqueue_style( 'wabbr' );
+        wp_enqueue_style('wabbr');
     }
 
     /**
-     * Register scripts
+     * Register scripts.
      */
-    function register_scripts()
+    public function register_scripts()
     {
-        wp_register_script( 'wabbr', WABBR_URL . 'assets/js/wabbr.js', null, WABBR_VERSION );
+        wp_register_script('wabbr', WABBR_URL.'assets/js/wabbr.js', null, WABBR_VERSION);
 
-        if( ! empty( self::$instance->gmaps->key ) && $key = self::$instance->gmaps->key ) {
-            wp_register_script( 'wabbr-gmaps', 'https://maps.googleapis.com/maps/api/js?key=' . $key . '&sensor=true', false, WABBR_VERSION, 'screen' );
+        if (! empty(self::$instance->gmaps->key) && $key = self::$instance->gmaps->key) {
+            wp_register_script('wabbr-gmaps', 'https://maps.googleapis.com/maps/api/js?key='.$key.'&sensor=true', false, WABBR_VERSION, 'screen');
         }
     }
 
     /**
      * Enqueue scripts.
      */
-    function enqueue_scripts()
+    public function enqueue_scripts()
     {
         // wp_enqueue_script( 'wabbr' );
         // wp_enqueue_script( 'wabbr-gmaps' );
@@ -170,13 +174,13 @@ class Wabbr
      * Localize scripts.
      * @return [type] [description]
      */
-    function localize_scripts()
+    public function localize_scripts()
     {
-        wp_localize_script( 'wabbr', 'Wabbr', array(
+        wp_localize_script('wabbr', 'Wabbr', array(
             'home_url'   => get_home_url(),
-            'ajax_url'   => admin_url( 'admin-ajax.php' ),
-            'wp_version' => get_bloginfo( 'version' )
-        ) );
+            'ajax_url'   => admin_url('admin-ajax.php'),
+            'wp_version' => get_bloginfo('version')
+        ));
     }
 
     /**

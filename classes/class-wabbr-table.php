@@ -3,15 +3,15 @@
 class Wabbr_Table extends Wabbr_Shortcode
 {
     /**
-     * Add shortcodes
+     * Add shortcodes.
      */
-    function add_shortcodes()
+    public function add_shortcodes()
     {
-        add_shortcode( 'table',         array( &$this, 'table' ) );
-        add_shortcode( 'table-head',    array( &$this, 'head' ) );
-        add_shortcode( 'table-foot',    array( &$this, 'foot' ) );
-        add_shortcode( 'table-row',     array( &$this, 'row' ) );
-        add_shortcode( 'table-cell',    array( &$this, 'cell' ) );
+        add_shortcode('table', array(&$this, 'table'));
+        add_shortcode('table-head', array(&$this, 'head'));
+        add_shortcode('table-foot', array(&$this, 'foot'));
+        add_shortcode('table-row', array(&$this, 'row'));
+        add_shortcode('table-cell', array(&$this, 'cell'));
     }
 
     /**
@@ -21,12 +21,12 @@ class Wabbr_Table extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function table( $atts, $content = null )
+    public function table($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'         => '',
             'responsive'    => true
-        ), $atts ) );
+        ), $atts));
 
         // View
         Wabbr::view('table/table', array(
@@ -42,14 +42,14 @@ class Wabbr_Table extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function head( $atts, $content = null )
+    public function head($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'     => '',
             'data'      => ''
-        ), $atts ) );
+        ), $atts));
 
-        return '<thead>' . do_shortcode( $content ) . '</thead>';
+        return '<thead>'.do_shortcode($content).'</thead>';
     }
 
     /**
@@ -59,14 +59,14 @@ class Wabbr_Table extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function foot( $atts, $content = null )
+    public function foot($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'     => '',
             'data'      => ''
-        ), $atts ) );
+        ), $atts));
 
-        return '<tfoot>' . do_shortcode( $content ) . '</tfoot>';
+        return '<tfoot>'.do_shortcode($content).'</tfoot>';
     }
 
     /**
@@ -76,15 +76,15 @@ class Wabbr_Table extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function row( $atts, $content = null )
+    public function row($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'     => '',
             'data'      => ''
-        ), $atts ) );
+        ), $atts));
 
         // Build row based on its data
-        $data = $this->_build_row( $content );
+        $data = $this->_build_row($content);
 
         // View
         Wabbr::view('table/row', array(
@@ -101,13 +101,13 @@ class Wabbr_Table extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function cell( $atts, $content = null )
+    public function cell($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'     => '',
-        ), $atts ) );
+        ), $atts));
 
-        return '<td class="wabbr wabbr-table-cell ' . $class . '">' . do_shortcode( $content ) . '</div>';
+        return '<td class="wabbr wabbr-table-cell '.$class.'">'.do_shortcode($content).'</div>';
     }
 
     /**
@@ -116,9 +116,9 @@ class Wabbr_Table extends Wabbr_Shortcode
      * @param  string $data
      * @return string
      */
-    private function _build_row( $data )
+    private function _build_row($data)
     {
-        $data = explode( ';', $data );
+        $data = explode(';', $data);
 
         return $data;
     }

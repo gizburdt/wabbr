@@ -3,12 +3,12 @@
 class Wabbr_Menu extends Wabbr_Shortcode
 {
     /**
-     * Add shortcodes
+     * Add shortcodes.
      */
-    function add_shortcodes()
+    public function add_shortcodes()
     {
-        add_shortcode( 'menu',          array( &$this, 'menu' ) );
-        add_shortcode( 'submenu',       array( &$this, 'submenu' ) );
+        add_shortcode('menu', array(&$this, 'menu'));
+        add_shortcode('submenu', array(&$this, 'submenu'));
     }
 
     /**
@@ -18,9 +18,9 @@ class Wabbr_Menu extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function menu( $atts, $content = null )
+    public function menu($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'theme_location'    => '',
             'name'              => '',
             'container'         => 'div',
@@ -37,11 +37,11 @@ class Wabbr_Menu extends Wabbr_Shortcode
             'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
             'depth'             => 0,
             'walker'            => ''
-        ), $atts ) );
+        ), $atts));
 
-        $walker = ! empty( $walker ) ? new $walker : '';
+        $walker = ! empty($walker) ? new $walker() : '';
 
-        return wp_nav_menu( array(
+        return wp_nav_menu(array(
             'theme_location'  => $theme_location,
             'menu'            => $name,
             'container'       => $container,
@@ -58,7 +58,7 @@ class Wabbr_Menu extends Wabbr_Shortcode
             'items_wrap'      => $items_wrap,
             'depth'           => $depth,
             'walker'          => $walker
-        ) );
+        ));
     }
 
     /**
@@ -68,13 +68,13 @@ class Wabbr_Menu extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function submenu( $atts, $content = null )
+    public function submenu($atts, $content = null)
     {
         global $post;
 
-        $parent = is_object( $post ) ? $post->ID : $post;
+        $parent = is_object($post) ? $post->ID : $post;
 
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'             => '',
             'authors'           => '',
             'child_of'          => $parent,
@@ -91,11 +91,11 @@ class Wabbr_Menu extends Wabbr_Shortcode
             'sort_column'       => 'menu_order, post_title',
             'title_li'          => '',
             'walker'            => ''
-        ), $atts ) );
+        ), $atts));
 
-        $walker = ! empty( $walker ) ? new $walker : '';
+        $walker = ! empty($walker) ? new $walker() : '';
 
-        return '<ul class="wabbr-submenu ' . $class . '">' . wp_list_pages( array(
+        return '<ul class="wabbr-submenu '.$class.'">'.wp_list_pages(array(
             'authors'     => $authors,
             'child_of'    => $child_of,
             'date_format' => $date_format,
@@ -111,6 +111,6 @@ class Wabbr_Menu extends Wabbr_Shortcode
             'sort_column' => $sort_column,
             'title_li'    => $title_li,
             'walker'      => $walker,
-        ) ) . '</ul>';
+        )).'</ul>';
     }
 }

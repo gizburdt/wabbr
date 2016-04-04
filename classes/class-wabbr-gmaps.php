@@ -5,11 +5,11 @@ class Wabbr_Gmaps extends Wabbr_Shortcode
     /**
      * Shortcodes.
      */
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
 
-        add_action( 'wp_head', array( &$this, 'wp_head' ) );
+        add_action('wp_head', array(&$this, 'wp_head'));
     }
 
     /**
@@ -17,22 +17,21 @@ class Wabbr_Gmaps extends Wabbr_Shortcode
      *
      * @return string
      */
-    function wp_head()
+    public function wp_head()
     {
         global $post;
 
-        if( isset( $post ) && isset( $post->post_content ) && has_shortcode( $post->post_content, 'gmaps' ) )
-        {
+        if (isset($post) && isset($post->post_content) && has_shortcode($post->post_content, 'gmaps')) {
             Wabbr::view('maps/head');
         }
     }
 
     /**
-     * Add shortcodes
+     * Add shortcodes.
      */
-    function add_shortcodes()
+    public function add_shortcodes()
     {
-        add_shortcode( 'gmaps',     array( &$this, 'gmaps' ) );
+        add_shortcode('gmaps', array(&$this, 'gmaps'));
     }
 
     /**
@@ -42,12 +41,12 @@ class Wabbr_Gmaps extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function gmaps( $atts, $content = null )
+    public function gmaps($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'key'       => '',
             'class'     => '',
-        ), $atts ) );
+        ), $atts));
 
         return '<div id="map-canvas"/>';
     }
