@@ -3,11 +3,11 @@
 class Wabbr_Sidebar extends Wabbr_Shortcode
 {
     /**
-     * Shortcodes
+     * Shortcodes.
      */
-    function add_shortcodes()
+    public function add_shortcodes()
     {
-        add_shortcode( 'sidebar', array( &$this, 'sidebar' ) );
+        add_shortcode('sidebar', array(&$this, 'sidebar'));
     }
 
     /**
@@ -17,12 +17,12 @@ class Wabbr_Sidebar extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function sidebar( $atts, $content = null )
+    public function sidebar($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'name'  => '',
             'class' => ''
-        ), $atts ) );
+        ), $atts));
 
         // View
         Wabbr::view('sidebar', array(

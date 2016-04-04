@@ -5,10 +5,10 @@ class Wabbr_Icon extends Wabbr_Shortcode
     /**
      * Shortcodes.
      */
-    function add_shortcodes()
+    public function add_shortcodes()
     {
-        add_shortcode( 'icon', array( &$this, 'icon' ) );
-        add_shortcode( 'flag', array( &$this, 'flag' ) );
+        add_shortcode('icon', array(&$this, 'icon'));
+        add_shortcode('flag', array(&$this, 'flag'));
     }
 
     /**
@@ -18,13 +18,13 @@ class Wabbr_Icon extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function icon( $atts, $content = null )
+    public function icon($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'     => '',
-        ), $atts ) );
+        ), $atts));
 
-        return '<i class="wabbr-icon icon ' . $class . '"></i>';
+        return '<i class="wabbr-icon icon '.$class.'"></i>';
     }
 
     /**
@@ -34,17 +34,17 @@ class Wabbr_Icon extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function flag( $atts, $content = null )
+    public function flag($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'   => '',
             'country' => '',
-            'ratio'   => apply_filters( 'wabbr_flag_ratio', 'normal' )
-        ), $atts ) );
+            'ratio'   => apply_filters('wabbr_flag_ratio', 'normal')
+        ), $atts));
 
-        $country = 'flag-icon-' . strtolower( $country );
+        $country = 'flag-icon-'.strtolower($country);
         $ratio   = $ratio == 'squared' ? 'flag-icon-squared' : '';
 
-        return '<i class="wabbr-flag flag-icon ' . $country . ' ' . $ratio . ' ' . $class . '"></i>';
+        return '<i class="wabbr-flag flag-icon '.$country.' '.$ratio.' '.$class.'"></i>';
     }
 }

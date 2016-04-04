@@ -5,10 +5,10 @@ class Wabbr_Posts extends Wabbr_Shortcode
     /**
      * Add shortcodes.
      */
-    function add_shortcodes()
+    public function add_shortcodes()
     {
-        add_shortcode( 'recent-posts',  array( &$this, 'recent' ) );
-        add_shortcode( 'related-posts', array( &$this, 'related' ) );
+        add_shortcode('recent-posts', array(&$this, 'recent'));
+        add_shortcode('related-posts', array(&$this, 'related'));
     }
 
     /**
@@ -18,9 +18,9 @@ class Wabbr_Posts extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function recent( $atts, $content = null )
+    public function recent($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'             => '',
             'show_thumbnail'    => true,
             'thumbnail_size'    => 'medium',
@@ -41,9 +41,9 @@ class Wabbr_Posts extends Wabbr_Shortcode
             'post_parent'       => '',
             'post_status'       => 'publish',
             'suppress_filters'  => true
-        ), $atts ) );
+        ), $atts));
 
-        $posts = new WP_Query( array(
+        $posts = new WP_Query(array(
             'post_type'         => $post_type,
             'posts_per_page'    => $posts_per_page,
             'offset'            => $offset,
@@ -58,7 +58,7 @@ class Wabbr_Posts extends Wabbr_Shortcode
             'post_parent'       => $post_parent,
             'post_status'       => $post_status,
             'suppress_filters'  => $suppress_filters
-        ) );
+        ));
 
         Wabbr::view('posts/recent', array(
             'class'           => $class,
@@ -76,18 +76,18 @@ class Wabbr_Posts extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function related( $atts, $content = null )
+    public function related($atts, $content = null)
     {
         global $post;
 
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'             => '',
             'show_thumbnail'    => true,
             'thumbnail_size'    => 'medium',
             'thumbnail_class'   => 'img-responsive',
 
             // get_posts variables
-            'post_type'         => isset( $post ) ? $post->post_type : '',
+            'post_type'         => isset($post) ? $post->post_type : '',
             'posts_per_page'    => 5,
             'offset'            => 0,
             'category'          => '',
@@ -101,9 +101,9 @@ class Wabbr_Posts extends Wabbr_Shortcode
             'post_parent'       => '',
             'post_status'       => 'publish',
             'suppress_filters'  => true
-        ), $atts ) );
+        ), $atts));
 
-        $posts = new WP_Query( array(
+        $posts = new WP_Query(array(
             'post_type'         => $post_type,
             'posts_per_page'    => $posts_per_page,
             'offset'            => $offset,
@@ -118,7 +118,7 @@ class Wabbr_Posts extends Wabbr_Shortcode
             'post_parent'       => $post_parent,
             'post_status'       => $post_status,
             'suppress_filters'  => $suppress_filters
-        ) );
+        ));
 
         Wabbr::view('posts/recent', array(
             'class'           => $class,

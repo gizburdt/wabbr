@@ -3,13 +3,13 @@
 class Wabbr_Text extends Wabbr_Shortcode
 {
     /**
-     * Add shortcodes
+     * Add shortcodes.
      */
-    function add_shortcodes()
+    public function add_shortcodes()
     {
-        add_shortcode( 'hr',    array( &$this, 'hr' ) );
-        add_shortcode( 'lead',  array( &$this, 'lead' ) );
-        add_shortcode( 'clear', array( &$this, 'clear' ) );
+        add_shortcode('hr', array(&$this, 'hr'));
+        add_shortcode('lead', array(&$this, 'lead'));
+        add_shortcode('clear', array(&$this, 'clear'));
     }
 
     /**
@@ -19,13 +19,13 @@ class Wabbr_Text extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function hr( $atts, $content = null )
+    public function hr($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'     => '',
-        ), $atts ) );
+        ), $atts));
 
-        return '<hr class="wabbr-hr ' . $class . '" />';
+        return '<hr class="wabbr-hr '.$class.'" />';
     }
 
     /**
@@ -35,13 +35,13 @@ class Wabbr_Text extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function lead( $atts, $content = null )
+    public function lead($atts, $content = null)
     {
-        extract( shortcode_atts( array(
+        extract(shortcode_atts(array(
             'class'     => '',
-        ), $atts ) );
+        ), $atts));
 
-        return '<p class="lead ' . $class . '">' . do_shortcode( $content ) . '</p>';
+        return '<p class="lead '.$class.'">'.do_shortcode($content).'</p>';
     }
 
     /**
@@ -51,7 +51,7 @@ class Wabbr_Text extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    function clear( $atts, $content = null )
+    public function clear($atts, $content = null)
     {
         return '<div class="wabbr-clear clearfix" style="clear: both;"></div>';
     }
