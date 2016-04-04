@@ -2,6 +2,9 @@
 
 class Wabbr_Button extends Wabbr_Shortcode
 {
+    /**
+     * Shortcodes.
+     */
     function add_shortcodes()
     {
         add_shortcode( 'button',            array( &$this, 'button' ) );
@@ -10,6 +13,13 @@ class Wabbr_Button extends Wabbr_Shortcode
         add_shortcode( 'button-tertiary',   array( &$this, 'button_tertiary' ) );
     }
 
+    /**
+     * Button.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function button( $atts, $content = null )
     {
         extract( shortcode_atts( array(
@@ -23,6 +33,13 @@ class Wabbr_Button extends Wabbr_Shortcode
         return '<a class="wabbr-btn btn ' . $class . '" href="' . $link . '" target="' . $target . '" title="' . $title . '" ' . ( $disabled ? 'disabled="disabled"' : '' ) . '>' . do_shortcode( $content ) . '</a>';
     }
 
+    /**
+     * Button (primary).
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function button_primary( $atts, $content = null )
     {
         extract( shortcode_atts( array(
@@ -34,6 +51,13 @@ class Wabbr_Button extends Wabbr_Shortcode
         return do_shortcode( '[button class="btn-primary ' . $class . '" link="' . $link . '" target="' . $target . '"]' . $content . '[/button]' );
     }
 
+    /**
+     * Button (secondary).
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function button_secondary( $atts, $content = null )
     {
         extract( shortcode_atts( array(
@@ -45,6 +69,13 @@ class Wabbr_Button extends Wabbr_Shortcode
         return do_shortcode( '[button class="btn-secondary ' . $class . '" link="' . $link . '" target="' . $target . '"]' . $content . '[/button]' );
     }
 
+    /**
+     * Button (tertiary).
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function button_tertiary( $atts, $content = null )
     {
         extract( shortcode_atts( array(

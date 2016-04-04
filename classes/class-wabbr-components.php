@@ -2,12 +2,22 @@
 
 class Wabbr_Components extends Wabbr_Shortcode
 {
+    /**
+     * Shortcodes.
+     */
     function add_shortcodes()
     {
         add_shortcode( 'block',         array( &$this, 'block' ) );
         add_shortcode( 'list-group',    array( &$this, 'list_group' ) );
     }
 
+    /**
+     * Block.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function block( $atts, $content = null )
     {
         extract( shortcode_atts( array(
@@ -17,6 +27,13 @@ class Wabbr_Components extends Wabbr_Shortcode
         return '<div class="wabbr-block ' . $class . '">' . do_shortcode( $content ) . '</div>';
     }
 
+    /**
+     * List group.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function list_group( $atts, $content = null )
     {
         extract( shortcode_atts( array(

@@ -2,12 +2,22 @@
 
 class Wabbr_Posts extends Wabbr_Shortcode
 {
+    /**
+     * Add shortcodes.
+     */
     function add_shortcodes()
     {
-        add_shortcode( 'recent-posts',      array( &$this, 'recent' ) );
-        add_shortcode( 'related-posts',     array( &$this, 'related' ) );
+        add_shortcode( 'recent-posts',  array( &$this, 'recent' ) );
+        add_shortcode( 'related-posts', array( &$this, 'related' ) );
     }
 
+    /**
+     * Recent posts.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function recent( $atts, $content = null )
     {
         extract( shortcode_atts( array(
@@ -50,27 +60,22 @@ class Wabbr_Posts extends Wabbr_Shortcode
             'suppress_filters'  => $suppress_filters
         ) );
 
-        ob_start();
-
-        if ( $posts->have_posts() )
-        {
-            echo '<div class="wabbr wabbr-recent-posts ' . $class . '">';
-                while ( $posts->have_posts() ) : $posts->the_post();
-
-                    echo '<div class="' . implode( ' ', get_post_class('wabbr-post') ) . '">';
-                        if( $show_thumbnail )
-                            echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '" class="wabbr-post-link">' . get_the_post_thumbnail( get_the_ID(), $thumbnail_size, array( 'class' => 'wabbr-post-img ' . $thumbnail_class ) ) . '</a>';
-
-                        echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '" class="wabbr-post-link">' . get_the_title() . '</a>';
-                    echo '</div>';
-
-                endwhile;
-            echo '</div>';
-        }
-
-        $output = ob_get_clean(); return $output;
+        Wabbr::view('posts/recent', array(
+            'class'           => $class,
+            'show_thumbnail'  => $show_thumbnail,
+            'thumbnail_size'  => $thumbnail_size,
+            'thumbnail_class' => $thumbnail_class,
+            'posts'           => $posts
+        ));
     }
 
+    /**
+     * Related posts.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function related( $atts, $content = null )
     {
         global $post;
@@ -115,24 +120,12 @@ class Wabbr_Posts extends Wabbr_Shortcode
             'suppress_filters'  => $suppress_filters
         ) );
 
-        ob_start();
-
-        if ( $posts->have_posts() )
-        {
-            echo '<div class="wabbr wabbr-related-posts ' . $class . '">';
-                while ( $posts->have_posts() ) : $posts->the_post();
-
-                    echo '<div class="' . implode( ' ', get_post_class('wabbr-post') ) . '">';
-                        if( $show_thumbnail )
-                            echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '" class="wabbr-post-link">' . get_the_post_thumbnail( get_the_ID(), $thumbnail_size, array( 'class' => 'wabbr-post-img ' . $thumbnail_class ) ) . '</a>';
-
-                        echo '<a href="' . get_permalink() . '" title="' . the_title_attribute( array( 'echo' => false ) ) . '" class="wabbr-post-link">' . get_the_title() . '</a>';
-                    echo '</div>';
-
-                endwhile;
-            echo '</div>';
-        }
-
-        $output = ob_get_clean(); return $output;
+        Wabbr::view('posts/recent', array(
+            'class'           => $class,
+            'show_thumbnail'  => $show_thumbnail,
+            'thumbnail_size'  => $thumbnail_size,
+            'thumbnail_class' => $thumbnail_class,
+            'posts'           => $posts
+        ));
     }
 }

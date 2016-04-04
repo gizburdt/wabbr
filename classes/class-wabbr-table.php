@@ -2,6 +2,9 @@
 
 class Wabbr_Table extends Wabbr_Shortcode
 {
+    /**
+     * Add shortcodes
+     */
     function add_shortcodes()
     {
         add_shortcode( 'table',         array( &$this, 'table' ) );
@@ -11,21 +14,34 @@ class Wabbr_Table extends Wabbr_Shortcode
         add_shortcode( 'table-cell',    array( &$this, 'cell' ) );
     }
 
+    /**
+     * Table.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function table( $atts, $content = null )
     {
         extract( shortcode_atts( array(
             'class'         => '',
             'responsive'    => true
         ), $atts ) );
-        ob_start();
 
-        if( $responsive ) echo '<div class="table-responsive wabbr-table-responsive">';
-            echo '<table class="table wabbr wabbr-table ' . $class . '">' . do_shortcode( $content ) . '</table>';
-        if( $responsive ) echo '</div>';
-
-        $output = ob_get_clean(); return $output;
+        // View
+        Wabbr::view('table/table', array(
+            'class'      => $class,
+            'responsive' => $responsive
+        ));
     }
 
+    /**
+     * Table head.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function head( $atts, $content = null )
     {
         extract( shortcode_atts( array(
@@ -36,6 +52,13 @@ class Wabbr_Table extends Wabbr_Shortcode
         return '<thead>' . do_shortcode( $content ) . '</thead>';
     }
 
+    /**
+     * Table foot.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function foot( $atts, $content = null )
     {
         extract( shortcode_atts( array(
@@ -46,26 +69,38 @@ class Wabbr_Table extends Wabbr_Shortcode
         return '<tfoot>' . do_shortcode( $content ) . '</tfoot>';
     }
 
+    /**
+     * Table row.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function row( $atts, $content = null )
     {
         extract( shortcode_atts( array(
             'class'     => '',
             'data'      => ''
         ), $atts ) );
-        ob_start();
 
         // Build row based on its data
-        $data   = $this->_build_row( $content );
+        $data = $this->_build_row( $content );
 
-        echo '<tr class="wabbr wabbr-table-row ' . $class . '">';
-            foreach( $data as $cell ) :
-                echo do_shortcode('[table-cell]' . $cell . '[/table-cell]');
-            endforeach;
-        echo '</tr>';
-
-        $output = ob_get_clean(); return $output;
+        // View
+        Wabbr::view('table/row', array(
+            'class'      => $class,
+            'responsive' => $responsive,
+            'data'       => $data
+        ));
     }
 
+    /**
+     * Table cell.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function cell( $atts, $content = null )
     {
         extract( shortcode_atts( array(
@@ -75,6 +110,12 @@ class Wabbr_Table extends Wabbr_Shortcode
         return '<td class="wabbr wabbr-table-cell ' . $class . '">' . do_shortcode( $content ) . '</div>';
     }
 
+    /**
+     * Build row.
+     *
+     * @param  string $data
+     * @return string
+     */
     private function _build_row( $data )
     {
         $data = explode( ';', $data );

@@ -2,12 +2,22 @@
 
 class Wabbr_Menu extends Wabbr_Shortcode
 {
+    /**
+     * Add shortcodes
+     */
     function add_shortcodes()
     {
         add_shortcode( 'menu',          array( &$this, 'menu' ) );
         add_shortcode( 'submenu',       array( &$this, 'submenu' ) );
     }
 
+    /**
+     * Menu.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function menu( $atts, $content = null )
     {
         extract( shortcode_atts( array(
@@ -32,25 +42,32 @@ class Wabbr_Menu extends Wabbr_Shortcode
         $walker = ! empty( $walker ) ? new $walker : '';
 
         return wp_nav_menu( array(
-            'theme_location'    => $theme_location,
-            'menu'              => $name,
-            'container'         => $container,
-            'container_class'   => $container_class,
-            'container_id'      => $container_id,
-            'menu_class'        => $menu_class,
-            'menu_id'           => $menu_id,
-            'echo'              => $echo,
-            'fallback_cb'       => $fallback_cb,
-            'before'            => $before,
-            'after'             => $after,
-            'link_before'       => $link_before,
-            'link_after'        => $link_after,
-            'items_wrap'        => $items_wrap,
-            'depth'             => $depth,
-            'walker'            => $walker
+            'theme_location'  => $theme_location,
+            'menu'            => $name,
+            'container'       => $container,
+            'container_class' => $container_class,
+            'container_id'    => $container_id,
+            'menu_class'      => $menu_class,
+            'menu_id'         => $menu_id,
+            'echo'            => $echo,
+            'fallback_cb'     => $fallback_cb,
+            'before'          => $before,
+            'after'           => $after,
+            'link_before'     => $link_before,
+            'link_after'      => $link_after,
+            'items_wrap'      => $items_wrap,
+            'depth'           => $depth,
+            'walker'          => $walker
         ) );
     }
 
+    /**
+     * Submenu.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function submenu( $atts, $content = null )
     {
         global $post;
@@ -79,21 +96,21 @@ class Wabbr_Menu extends Wabbr_Shortcode
         $walker = ! empty( $walker ) ? new $walker : '';
 
         return '<ul class="wabbr-submenu ' . $class . '">' . wp_list_pages( array(
-            'authors'           => $authors,
-            'child_of'          => $child_of,
-            'date_format'       => $date_format,
-            'depth'             => $depth,
-            'echo'              => $echo,
-            'exclude'           => $exclude,
-            'include'           => $include,
-            'link_after'        => $link_after,
-            'link_before'       => $link_before,
-            'post_type'         => $post_type,
-            'post_status'       => $post_status,
-            'show_date'         => $show_date,
-            'sort_column'       => $sort_column,
-            'title_li'          => $title_li,
-            'walker'            => $walker,
+            'authors'     => $authors,
+            'child_of'    => $child_of,
+            'date_format' => $date_format,
+            'depth'       => $depth,
+            'echo'        => $echo,
+            'exclude'     => $exclude,
+            'include'     => $include,
+            'link_after'  => $link_after,
+            'link_before' => $link_before,
+            'post_type'   => $post_type,
+            'post_status' => $post_status,
+            'show_date'   => $show_date,
+            'sort_column' => $sort_column,
+            'title_li'    => $title_li,
+            'walker'      => $walker,
         ) ) . '</ul>';
     }
 }

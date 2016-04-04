@@ -19,8 +19,18 @@ if( ! class_exists( 'Wabbr' ) ) :
  */
 class Wabbr
 {
+    /**
+     * Instance.
+     *
+     * @var object
+     */
     private static $instance;
 
+    /**
+     * Create instance.
+     *
+     * @return object
+     */
     public static function instance()
     {
         if ( ! isset( self::$instance ) )
@@ -36,6 +46,9 @@ class Wabbr
         return self::$instance;
     }
 
+    /**
+     * Setup constants.
+     */
     function setup_constants()
     {
         if( ! defined( 'WABBR_VERSION' ) )
@@ -48,6 +61,9 @@ class Wabbr
             define( 'WABBR_URL', plugin_dir_url( __FILE__ ) );
     }
 
+    /**
+     * Includes.
+     */
     function includes()
     {
         include( WABBR_DIR . 'classes/class-wabbr-shortcode.php' );
@@ -68,6 +84,9 @@ class Wabbr
         include( WABBR_DIR . 'classes/class-wabbr-iframe.php' );
     }
 
+    /**
+     * Add hooks
+     */
     function add_hooks()
     {
         // Styles
@@ -79,6 +98,9 @@ class Wabbr
         add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
     }
 
+    /**
+     * Execute.
+     */
     function execute()
     {
         // Wordpress
@@ -97,37 +119,57 @@ class Wabbr
         self::$instance->iframe     = new Wabbr_Iframe;
     }
 
+    /**
+     * Options
+     */
     function options()
     {
         self::$instance->gmaps->key = '';
     }
 
+    /**
+     * Register styles.
+     */
     function register_styles()
     {
         wp_register_style( 'wabbr', WABBR_URL . 'assets/css/wabbr.css', false, WABBR_VERSION, 'screen' );
     }
 
+    /**
+     * Enqueue styles.
+     */
     function enqueue_styles()
     {
         wp_enqueue_style( 'wabbr' );
     }
 
+    /**
+     * Register scripts
+     */
     function register_scripts()
     {
         wp_register_script( 'wabbr', WABBR_URL . 'assets/js/wabbr.js', null, WABBR_VERSION );
 
-        if( ! empty( self::$instance->gmaps->key ) && $key = self::$instance->gmaps->key )
+        if( ! empty( self::$instance->gmaps->key ) && $key = self::$instance->gmaps->key ) {
             wp_register_script( 'wabbr-gmaps', 'https://maps.googleapis.com/maps/api/js?key=' . $key . '&sensor=true', false, WABBR_VERSION, 'screen' );
+        }
     }
 
+    /**
+     * Enqueue scripts.
+     */
     function enqueue_scripts()
     {
-        wp_enqueue_script( 'wabbr' );
-        wp_enqueue_script( 'wabbr-gmaps' );
+        // wp_enqueue_script( 'wabbr' );
+        // wp_enqueue_script( 'wabbr-gmaps' );
 
-        self::localize_scripts();
+        // self::localize_scripts();
     }
 
+    /**
+     * Localize scripts.
+     * @return [type] [description]
+     */
     function localize_scripts()
     {
         wp_localize_script( 'wabbr', 'Wabbr', array(
@@ -135,6 +177,20 @@ class Wabbr
             'ajax_url'   => admin_url( 'admin-ajax.php' ),
             'wp_version' => get_bloginfo( 'version' )
         ) );
+    }
+
+    /**
+     * Include view file.
+     *
+     * @param string $view
+     * @param array  $variables
+     * @since 3.0
+     */
+    public static function view($view, $variables = array())
+    {
+        extract($variables);
+
+        include WABBR_DIR.'/resources/views/'.$view.'.php';
     }
 }
 

@@ -2,6 +2,9 @@
 
 class Wabbr_Text extends Wabbr_Shortcode
 {
+    /**
+     * Add shortcodes
+     */
     function add_shortcodes()
     {
         add_shortcode( 'hr',    array( &$this, 'hr' ) );
@@ -9,6 +12,13 @@ class Wabbr_Text extends Wabbr_Shortcode
         add_shortcode( 'clear', array( &$this, 'clear' ) );
     }
 
+    /**
+     * HR.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function hr( $atts, $content = null )
     {
         extract( shortcode_atts( array(
@@ -18,6 +28,13 @@ class Wabbr_Text extends Wabbr_Shortcode
         return '<hr class="wabbr-hr ' . $class . '" />';
     }
 
+    /**
+     * Lead.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function lead( $atts, $content = null )
     {
         extract( shortcode_atts( array(
@@ -27,7 +44,13 @@ class Wabbr_Text extends Wabbr_Shortcode
         return '<p class="lead ' . $class . '">' . do_shortcode( $content ) . '</p>';
     }
 
-
+    /**
+     * Clear.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function clear( $atts, $content = null )
     {
         return '<div class="wabbr-clear clearfix" style="clear: both;"></div>';

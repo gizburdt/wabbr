@@ -2,11 +2,21 @@
 
 class Wabbr_Iframe extends Wabbr_Shortcode
 {
+    /**
+     * Shortcodes.
+     */
     function add_shortcodes()
     {
         add_shortcode( 'iframe',    array( &$this, 'iframe' ) );
     }
 
+    /**
+     * Iframe.
+     *
+     * @param  array  $atts
+     * @param  string $content
+     * @return string
+     */
     function iframe( $atts, $content = null )
     {
         $atts = shortcode_atts( array(
@@ -18,17 +28,8 @@ class Wabbr_Iframe extends Wabbr_Shortcode
             'frameborder'   => '0'
         ), $atts );
 
-        ob_start(); ?>
-
-        <iframe
-            src="<?php echo $atts['src']; ?>"
-            width="<?php echo $atts['width']; ?>"
-            height="<?php echo $atts['height']; ?>"
-            scrolling="<?php echo $atts['scrolling']; ?>"
-            class="<?php echo $atts['class']; ?>"
-            frameborder="<?php echo $atts['frameborder']; ?>">
-        </iframe>
-
-        <?php $output = ob_get_clean(); return $output;
+        Wabbr::view('iframe', array(
+            'atts' => $atts,
+        ));
     }
 }
