@@ -1,5 +1,9 @@
 <?php
 
+if (! defined('ABSPATH')) {
+    exit;
+}
+
 class Wabbr_Menu extends Wabbr_Shortcode
 {
     /**

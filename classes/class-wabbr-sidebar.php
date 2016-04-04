@@ -1,5 +1,9 @@
 <?php
 
+if (! defined('ABSPATH')) {
+    exit;
+}
+
 class Wabbr_Sidebar extends Wabbr_Shortcode
 {
     /**
