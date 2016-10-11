@@ -31,8 +31,7 @@ class Wabbr_Sidebar extends Wabbr_Shortcode
         // View
         Wabbr::view('sidebar', array(
             'name'       => $name,
-            'class'      => $class,
-            'responsive' => $responsive
+            'class'      => $class
         ));
     }
 }
