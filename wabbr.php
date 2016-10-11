@@ -4,7 +4,7 @@
 Plugin Name:    Wabbr
 Plugin URI:     http://github.com/gizburdt
 Description:    Awesome shortcodes!
-Version:        0.1
+Version:        0.2.2
 Author:         Gizburdt
 Author URI:     http://gizburdt.com
 License:        GPL2
@@ -53,7 +53,7 @@ class Wabbr
     public function setup_constants()
     {
         if (! defined('WABBR_VERSION')) {
-            define('WABBR_VERSION', '0.1');
+            define('WABBR_VERSION', '0.2.2');
         }
 
         if (! defined('WABBR_DIR')) {
