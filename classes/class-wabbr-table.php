@@ -28,13 +28,14 @@ class Wabbr_Table extends Wabbr_Shortcode
     public function table($atts, $content = null)
     {
         extract(shortcode_atts(array(
-            'class'         => '',
-            'responsive'    => true
+            'class'      => '',
+            'responsive' => true
         ), $atts));
 
         // View
         Wabbr::view('table/table', array(
             'class'      => $class,
+            'content'    => $content,
             'responsive' => $responsive
         ));
     }
@@ -93,6 +94,7 @@ class Wabbr_Table extends Wabbr_Shortcode
         // View
         Wabbr::view('table/row', array(
             'class'      => $class,
+            'content'    => $content,
             'responsive' => $responsive,
             'data'       => $data
         ));
