@@ -37,9 +37,9 @@ class Wabbr
     {
         if (! isset(self::$instance)) {
             self::$instance = new self();
-            self::$instance->setup_constants();
+            self::$instance->setupConstants();
             self::$instance->includes();
-            self::$instance->add_hooks();
+            self::$instance->addHooks();
             self::$instance->execute();
             self::$instance->options();
         }
@@ -50,7 +50,7 @@ class Wabbr
     /**
      * Setup constants.
      */
-    public function setup_constants()
+    public function setupConstants()
     {
         if (! defined('WABBR_VERSION')) {
             define('WABBR_VERSION', '0.2.2');
@@ -91,15 +91,15 @@ class Wabbr
     /**
      * Add hooks.
      */
-    public function add_hooks()
+    public function addHooks()
     {
         // Styles
-        add_action('wp_enqueue_scripts', array(&$this, 'register_styles'));
-        add_action('wp_enqueue_scripts', array(&$this, 'enqueue_styles'));
+        add_action('wp_enqueue_scripts', array(&$this, 'registerStyles'));
+        add_action('wp_enqueue_scripts', array(&$this, 'enqueueStyles'));
 
         // Scripts
-        add_action('wp_enqueue_scripts', array(&$this, 'register_scripts'));
-        add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
+        add_action('wp_enqueue_scripts', array(&$this, 'registerScripts'));
+        add_action('wp_enqueue_scripts', array(&$this, 'enqueueScripts'));
     }
 
     /**
@@ -134,7 +134,7 @@ class Wabbr
     /**
      * Register styles.
      */
-    public function register_styles()
+    public function registerStyles()
     {
         wp_register_style('wabbr', WABBR_URL.'assets/css/wabbr.css', false, WABBR_VERSION, 'screen');
     }
@@ -142,7 +142,7 @@ class Wabbr
     /**
      * Enqueue styles.
      */
-    public function enqueue_styles()
+    public function enqueueStyles()
     {
         wp_enqueue_style('wabbr');
     }
@@ -150,7 +150,7 @@ class Wabbr
     /**
      * Register scripts.
      */
-    public function register_scripts()
+    public function registerScripts()
     {
         wp_register_script('wabbr', WABBR_URL.'assets/js/wabbr.js', null, WABBR_VERSION);
 
@@ -162,19 +162,19 @@ class Wabbr
     /**
      * Enqueue scripts.
      */
-    public function enqueue_scripts()
+    public function enqueueScripts()
     {
         // wp_enqueue_script( 'wabbr' );
         // wp_enqueue_script( 'wabbr-gmaps' );
 
-        // self::localize_scripts();
+        // self::localizeScripts();
     }
 
     /**
      * Localize scripts.
      * @return [type] [description]
      */
-    public function localize_scripts()
+    public function localizeScripts()
     {
         wp_localize_script('wabbr', 'Wabbr', array(
             'home_url'   => get_home_url(),
