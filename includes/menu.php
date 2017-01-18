@@ -4,12 +4,12 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-class Wabbr_Menu extends Wabbr_Shortcode
+class WabbrMenu extends WabbrShortcode
 {
     /**
      * Add shortcodes.
      */
-    public function add_shortcodes()
+    public function addShortcodes()
     {
         add_shortcode('menu', array(&$this, 'menu'));
         add_shortcode('submenu', array(&$this, 'submenu'));

@@ -4,12 +4,12 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-class Wabbr_Posts extends Wabbr_Shortcode
+class WabbrPosts extends WabbrShortcode
 {
     /**
      * Add shortcodes.
      */
-    public function add_shortcodes()
+    public function addShortcodes()
     {
         add_shortcode('recent-posts', array(&$this, 'recent'));
         add_shortcode('related-posts', array(&$this, 'related'));

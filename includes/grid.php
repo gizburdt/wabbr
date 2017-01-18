@@ -4,12 +4,12 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-class Wabbr_Grid extends Wabbr_Shortcode
+class WabbrGrid extends WabbrShortcode
 {
     /**
      * Shortcodes.
      */
-    public function add_shortcodes()
+    public function addShortcodes()
     {
         add_shortcode('container', array(&$this, 'container'));
         add_shortcode('row', array(&$this, 'row'));
@@ -67,7 +67,7 @@ class Wabbr_Grid extends Wabbr_Shortcode
         ), $atts));
 
         // Convert numeric classes
-        $size   = $this->_convert_sizes($size);
+        $size   = $this->_convertSizes($size);
 
         // Output
         return '<div class="wabbr-col '.$size.' '.$class.'">'.do_shortcode($content).'</div>';
@@ -79,7 +79,7 @@ class Wabbr_Grid extends Wabbr_Shortcode
      * @param  array  $size
      * @return string
      */
-    private function _convert_sizes($size)
+    private function _convertSizes($size)
     {
         $sizes      = explode(' ', $size);
         $classes    = array();

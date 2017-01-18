@@ -4,17 +4,17 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-class Wabbr_Button extends Wabbr_Shortcode
+class WabbrButton extends WabbrShortcode
 {
     /**
      * Shortcodes.
      */
-    public function add_shortcodes()
+    public function addShortcodes()
     {
         add_shortcode('button', array(&$this, 'button'));
-        add_shortcode('button-primary', array(&$this, 'button_primary'));
-        add_shortcode('button-secondary', array(&$this, 'button_secondary'));
-        add_shortcode('button-tertiary', array(&$this, 'button_tertiary'));
+        add_shortcode('button-primary', array(&$this, 'buttonPrimary'));
+        add_shortcode('button-secondary', array(&$this, 'buttonSecondary'));
+        add_shortcode('button-tertiary', array(&$this, 'buttonTertiary'));
     }
 
     /**
@@ -44,7 +44,7 @@ class Wabbr_Button extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    public function button_primary($atts, $content = null)
+    public function buttonPrimary($atts, $content = null)
     {
         extract(shortcode_atts(array(
             'class'     => '',
@@ -62,7 +62,7 @@ class Wabbr_Button extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    public function button_secondary($atts, $content = null)
+    public function buttonSecondary($atts, $content = null)
     {
         extract(shortcode_atts(array(
             'class'     => '',
@@ -80,7 +80,7 @@ class Wabbr_Button extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    public function button_tertiary($atts, $content = null)
+    public function buttonTertiary($atts, $content = null)
     {
         extract(shortcode_atts(array(
             'class'     => '',

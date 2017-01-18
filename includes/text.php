@@ -4,12 +4,12 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-class Wabbr_Text extends Wabbr_Shortcode
+class WabbrText extends WabbrShortcode
 {
     /**
      * Add shortcodes.
      */
-    public function add_shortcodes()
+    public function addShortcodes()
     {
         add_shortcode('hr', array(&$this, 'hr'));
         add_shortcode('lead', array(&$this, 'lead'));

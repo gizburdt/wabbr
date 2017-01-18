@@ -4,12 +4,12 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-class Wabbr_Table extends Wabbr_Shortcode
+class WabbrTable extends WabbrShortcode
 {
     /**
      * Add shortcodes.
      */
-    public function add_shortcodes()
+    public function addShortcodes()
     {
         add_shortcode('table', array(&$this, 'table'));
         add_shortcode('table-head', array(&$this, 'head'));
@@ -89,7 +89,7 @@ class Wabbr_Table extends Wabbr_Shortcode
         ), $atts));
 
         // Build row based on its data
-        $data = $this->_build_row($content);
+        $data = $this->_buildRow($content);
 
         // View
         Wabbr::view('table/row', array(
@@ -122,7 +122,7 @@ class Wabbr_Table extends Wabbr_Shortcode
      * @param  string $data
      * @return string
      */
-    private function _build_row($data)
+    private function _buildRow($data)
     {
         $data = explode(';', $data);
 

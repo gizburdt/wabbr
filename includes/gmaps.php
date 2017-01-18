@@ -4,7 +4,7 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-class Wabbr_Gmaps extends Wabbr_Shortcode
+class WabbrGmaps extends WabbrShortcode
 {
     /**
      * Shortcodes.
@@ -13,7 +13,7 @@ class Wabbr_Gmaps extends Wabbr_Shortcode
     {
         parent::__construct();
 
-        add_action('wp_head', array(&$this, 'wp_head'));
+        add_action('wp_head', array(&$this, 'wpHead'));
     }
 
     /**
@@ -21,7 +21,7 @@ class Wabbr_Gmaps extends Wabbr_Shortcode
      *
      * @return string
      */
-    public function wp_head()
+    public function wpHead()
     {
         global $post;
 
@@ -33,7 +33,7 @@ class Wabbr_Gmaps extends Wabbr_Shortcode
     /**
      * Add shortcodes.
      */
-    public function add_shortcodes()
+    public function addShortcodes()
     {
         add_shortcode('gmaps', array(&$this, 'gmaps'));
     }

@@ -4,12 +4,12 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-class Wabbr_Icon extends Wabbr_Shortcode
+class WabbrIcon extends WabbrShortcode
 {
     /**
      * Shortcodes.
      */
-    public function add_shortcodes()
+    public function addShortcodes()
     {
         add_shortcode('icon', array(&$this, 'icon'));
         add_shortcode('flag', array(&$this, 'flag'));

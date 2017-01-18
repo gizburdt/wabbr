@@ -70,22 +70,22 @@ class Wabbr
      */
     public function includes()
     {
-        include WABBR_DIR.'classes/class-wabbr-shortcode.php';
+        include WABBR_DIR.'includes/shortcode.php';
 
         // Wordpress
-        include WABBR_DIR.'classes/class-wabbr-menu.php';
-        include WABBR_DIR.'classes/class-wabbr-posts.php';
-        include WABBR_DIR.'classes/class-wabbr-sidebar.php';
+        include WABBR_DIR.'includes/menu.php';
+        include WABBR_DIR.'includes/posts.php';
+        include WABBR_DIR.'includes/sidebar.php';
 
         // HTML
-        include WABBR_DIR.'classes/class-wabbr-components.php';
-        include WABBR_DIR.'classes/class-wabbr-grid.php';
-        include WABBR_DIR.'classes/class-wabbr-button.php';
-        include WABBR_DIR.'classes/class-wabbr-icon.php';
-        include WABBR_DIR.'classes/class-wabbr-text.php';
-        include WABBR_DIR.'classes/class-wabbr-table.php';
-        include WABBR_DIR.'classes/class-wabbr-gmaps.php';
-        include WABBR_DIR.'classes/class-wabbr-iframe.php';
+        include WABBR_DIR.'includes/components.php';
+        include WABBR_DIR.'includes/grid.php';
+        include WABBR_DIR.'includes/button.php';
+        include WABBR_DIR.'includes/icon.php';
+        include WABBR_DIR.'includes/text.php';
+        include WABBR_DIR.'includes/table.php';
+        include WABBR_DIR.'includes/gmaps.php';
+        include WABBR_DIR.'includes/iframe.php';
     }
 
     /**
@@ -108,19 +108,19 @@ class Wabbr
     public function execute()
     {
         // Wordpress
-        self::$instance->menu       = new Wabbr_Menu();
-        self::$instance->posts      = new Wabbr_Posts();
-        self::$instance->table      = new Wabbr_Sidebar();
+        self::$instance->menu       = new WabbrMenu();
+        self::$instance->posts      = new WabbrPosts();
+        self::$instance->table      = new WabbrSidebar();
 
         // HTML
-        self::$instance->components = new Wabbr_Components();
-        self::$instance->grid       = new Wabbr_Grid();
-        self::$instance->text       = new Wabbr_Text();
-        self::$instance->button     = new Wabbr_Button();
-        self::$instance->button     = new Wabbr_Icon();
-        self::$instance->table      = new Wabbr_Table();
-        self::$instance->gmaps      = new Wabbr_Gmaps();
-        self::$instance->iframe     = new Wabbr_Iframe();
+        self::$instance->components = new WabbrComponents();
+        self::$instance->grid       = new WabbrGrid();
+        self::$instance->text       = new WabbrText();
+        self::$instance->button     = new WabbrButton();
+        self::$instance->button     = new WabbrIcon();
+        self::$instance->table      = new WabbrTable();
+        self::$instance->gmaps      = new WabbrGmaps();
+        self::$instance->iframe     = new WabbrIframe();
     }
 
     /**

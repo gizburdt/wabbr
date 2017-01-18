@@ -4,12 +4,12 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-class Wabbr_Iframe extends Wabbr_Shortcode
+class WabbrIframe extends WabbrShortcode
 {
     /**
      * Shortcodes.
      */
-    public function add_shortcodes()
+    public function addShortcodes()
     {
         add_shortcode('iframe', array(&$this, 'iframe'));
     }

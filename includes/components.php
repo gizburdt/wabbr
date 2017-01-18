@@ -4,15 +4,15 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-class Wabbr_Components extends Wabbr_Shortcode
+class WabbrComponents extends WabbrShortcode
 {
     /**
      * Shortcodes.
      */
-    public function add_shortcodes()
+    public function addShortcodes()
     {
         add_shortcode('block', array(&$this, 'block'));
-        add_shortcode('list-group', array(&$this, 'list_group'));
+        add_shortcode('list-group', array(&$this, 'listGroup'));
     }
 
     /**
@@ -38,7 +38,7 @@ class Wabbr_Components extends Wabbr_Shortcode
      * @param  string $content
      * @return string
      */
-    public function list_group($atts, $content = null)
+    public function listGroup($atts, $content = null)
     {
         extract(shortcode_atts(array(
             'class'     => '',
