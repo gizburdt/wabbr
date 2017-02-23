@@ -2,6 +2,7 @@
     "name": "gizburdt/wabbr",
     "type": "wordpress-plugin",
     "description": "Awesome shortcodes",
+    "license": "MIT",
     "authors": [
         {
             "name": "Gizburdt",
