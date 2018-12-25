@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
@@ -11,23 +11,24 @@ class WabbrText extends WabbrShortcode
      */
     public function addShortcodes()
     {
-        add_shortcode('hr', array(&$this, 'hr'));
-        add_shortcode('lead', array(&$this, 'lead'));
-        add_shortcode('clear', array(&$this, 'clear'));
+        add_shortcode('hr', [&$this, 'hr']);
+        add_shortcode('lead', [&$this, 'lead']);
+        add_shortcode('clear', [&$this, 'clear']);
     }
 
     /**
      * HR.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function hr($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'class'     => '',
-        ), $atts));
+        ], $atts));
 
         return '<hr class="wabbr-hr '.$class.'" />';
     }
@@ -35,15 +36,16 @@ class WabbrText extends WabbrShortcode
     /**
      * Lead.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function lead($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'class'     => '',
-        ), $atts));
+        ], $atts));
 
         return '<p class="lead '.$class.'">'.do_shortcode($content).'</p>';
     }
@@ -51,8 +53,9 @@ class WabbrText extends WabbrShortcode
     /**
      * Clear.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function clear($atts, $content = null)

@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
@@ -11,6 +11,6 @@ class WabbrShortcode
      */
     public function __construct()
     {
-        add_action('init', array(&$this, 'addShortcodes'));
+        add_action('init', [&$this, 'addShortcodes']);
     }
 }

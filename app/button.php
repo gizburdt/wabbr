@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
@@ -11,28 +11,29 @@ class WabbrButton extends WabbrShortcode
      */
     public function addShortcodes()
     {
-        add_shortcode('button', array(&$this, 'button'));
-        add_shortcode('button-primary', array(&$this, 'buttonPrimary'));
-        add_shortcode('button-secondary', array(&$this, 'buttonSecondary'));
-        add_shortcode('button-tertiary', array(&$this, 'buttonTertiary'));
+        add_shortcode('button', [&$this, 'button']);
+        add_shortcode('button-primary', [&$this, 'buttonPrimary']);
+        add_shortcode('button-secondary', [&$this, 'buttonSecondary']);
+        add_shortcode('button-tertiary', [&$this, 'buttonTertiary']);
     }
 
     /**
      * Button.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function button($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'class'     => '',
             'link'      => '#',
             'target'    => '',
             'title'     => '',
-            'disabled'  => false
-        ), $atts));
+            'disabled'  => false,
+        ], $atts));
 
         return '<a class="wabbr-btn btn '.$class.'" href="'.$link.'" target="'.$target.'" title="'.$title.'" '.($disabled ? 'disabled="disabled"' : '').'>'.do_shortcode($content).'</a>';
     }
@@ -40,17 +41,18 @@ class WabbrButton extends WabbrShortcode
     /**
      * Button (primary).
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function buttonPrimary($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'class'     => '',
             'link'      => '#',
-            'target'    => ''
-        ), $atts));
+            'target'    => '',
+        ], $atts));
 
         return do_shortcode('[button class="btn-primary '.$class.'" link="'.$link.'" target="'.$target.'"]'.$content.'[/button]');
     }
@@ -58,17 +60,18 @@ class WabbrButton extends WabbrShortcode
     /**
      * Button (secondary).
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function buttonSecondary($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'class'     => '',
             'link'      => '#',
-            'target'    => ''
-        ), $atts));
+            'target'    => '',
+        ], $atts));
 
         return do_shortcode('[button class="btn-secondary '.$class.'" link="'.$link.'" target="'.$target.'"]'.$content.'[/button]');
     }
@@ -76,17 +79,18 @@ class WabbrButton extends WabbrShortcode
     /**
      * Button (tertiary).
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function buttonTertiary($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'class'     => '',
             'link'      => '#',
-            'target'    => ''
-        ), $atts));
+            'target'    => '',
+        ], $atts));
 
         return do_shortcode('[button class="btn-tertiary '.$class.'" link="'.$link.'" target="'.$target.'"]'.$content.'[/button]');
     }

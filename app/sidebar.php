@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
@@ -11,27 +11,28 @@ class WabbrSidebar extends WabbrShortcode
      */
     public function addShortcodes()
     {
-        add_shortcode('sidebar', array(&$this, 'sidebar'));
+        add_shortcode('sidebar', [&$this, 'sidebar']);
     }
 
     /**
      * Sidebar.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function sidebar($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'name'  => '',
-            'class' => ''
-        ), $atts));
+            'class' => '',
+        ], $atts));
 
         // View
-        Wabbr::view('sidebar', array(
+        Wabbr::view('sidebar', [
             'name'       => $name,
-            'class'      => $class
-        ));
+            'class'      => $class,
+        ]);
     }
 }

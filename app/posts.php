@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
@@ -11,20 +11,21 @@ class WabbrPosts extends WabbrShortcode
      */
     public function addShortcodes()
     {
-        add_shortcode('recent-posts', array(&$this, 'recent'));
-        add_shortcode('related-posts', array(&$this, 'related'));
+        add_shortcode('recent-posts', [&$this, 'recent']);
+        add_shortcode('related-posts', [&$this, 'related']);
     }
 
     /**
      * Recent posts.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function recent($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'class'             => '',
             'show_thumbnail'    => true,
             'thumbnail_size'    => 'medium',
@@ -44,10 +45,10 @@ class WabbrPosts extends WabbrShortcode
             'post_mime_type'    => '',
             'post_parent'       => '',
             'post_status'       => 'publish',
-            'suppress_filters'  => true
-        ), $atts));
+            'suppress_filters'  => true,
+        ], $atts));
 
-        $posts = new WP_Query(array(
+        $posts = new WP_Query([
             'post_type'         => $post_type,
             'posts_per_page'    => $posts_per_page,
             'offset'            => $offset,
@@ -61,30 +62,31 @@ class WabbrPosts extends WabbrShortcode
             'post_mime_type'    => $post_mime_type,
             'post_parent'       => $post_parent,
             'post_status'       => $post_status,
-            'suppress_filters'  => $suppress_filters
-        ));
+            'suppress_filters'  => $suppress_filters,
+        ]);
 
-        Wabbr::view('posts/recent', array(
+        Wabbr::view('posts/recent', [
             'class'           => $class,
             'show_thumbnail'  => $show_thumbnail,
             'thumbnail_size'  => $thumbnail_size,
             'thumbnail_class' => $thumbnail_class,
-            'posts'           => $posts
-        ));
+            'posts'           => $posts,
+        ]);
     }
 
     /**
      * Related posts.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function related($atts, $content = null)
     {
         global $post;
 
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'class'             => '',
             'show_thumbnail'    => true,
             'thumbnail_size'    => 'medium',
@@ -104,10 +106,10 @@ class WabbrPosts extends WabbrShortcode
             'post_mime_type'    => '',
             'post_parent'       => '',
             'post_status'       => 'publish',
-            'suppress_filters'  => true
-        ), $atts));
+            'suppress_filters'  => true,
+        ], $atts));
 
-        $posts = new WP_Query(array(
+        $posts = new WP_Query([
             'post_type'         => $post_type,
             'posts_per_page'    => $posts_per_page,
             'offset'            => $offset,
@@ -121,15 +123,15 @@ class WabbrPosts extends WabbrShortcode
             'post_mime_type'    => $post_mime_type,
             'post_parent'       => $post_parent,
             'post_status'       => $post_status,
-            'suppress_filters'  => $suppress_filters
-        ));
+            'suppress_filters'  => $suppress_filters,
+        ]);
 
-        Wabbr::view('posts/recent', array(
+        Wabbr::view('posts/recent', [
             'class'           => $class,
             'show_thumbnail'  => $show_thumbnail,
             'thumbnail_size'  => $thumbnail_size,
             'thumbnail_class' => $thumbnail_class,
-            'posts'           => $posts
-        ));
+            'posts'           => $posts,
+        ]);
     }
 }
