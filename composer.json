@@ -1,14 +1,13 @@
 {
     "name": "gizburdt/wabbr",
     "type": "wordpress-plugin",
-    "description": "Awesome shortcodes",
+    "description": "Awesome Shortcodes",
     "license": "MIT",
     "authors": [
         {
-            "name": "Gizburdt",
-            "email": "gizburdt@gmail.com"
+            "name": "Gijs Jorissen",
+            "email": "lol@gizburdt.com",
+            "homepage": "http://gizburdt.com"
         }
     ],
-    "require": {
-    }
 }

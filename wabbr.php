@@ -70,22 +70,22 @@ class Wabbr
      */
     public function includes()
     {
-        include WABBR_DIR.'includes/shortcode.php';
+        include WABBR_DIR.'app/shortcode.php';
 
         // Wordpress
-        include WABBR_DIR.'includes/menu.php';
-        include WABBR_DIR.'includes/posts.php';
-        include WABBR_DIR.'includes/sidebar.php';
+        include WABBR_DIR.'app/menu.php';
+        include WABBR_DIR.'app/posts.php';
+        include WABBR_DIR.'app/sidebar.php';
 
         // HTML
-        include WABBR_DIR.'includes/components.php';
-        include WABBR_DIR.'includes/grid.php';
-        include WABBR_DIR.'includes/button.php';
-        include WABBR_DIR.'includes/icon.php';
-        include WABBR_DIR.'includes/text.php';
-        include WABBR_DIR.'includes/table.php';
-        include WABBR_DIR.'includes/gmaps.php';
-        include WABBR_DIR.'includes/iframe.php';
+        include WABBR_DIR.'app/components.php';
+        include WABBR_DIR.'app/grid.php';
+        include WABBR_DIR.'app/button.php';
+        include WABBR_DIR.'app/icon.php';
+        include WABBR_DIR.'app/text.php';
+        include WABBR_DIR.'app/table.php';
+        include WABBR_DIR.'app/gmaps.php';
+        include WABBR_DIR.'app/iframe.php';
     }
 
     /**
@@ -136,7 +136,7 @@ class Wabbr
      */
     public function registerStyles()
     {
-        wp_register_style('wabbr', WABBR_URL.'assets/css/wabbr.css', false, WABBR_VERSION, 'screen');
+        wp_register_style('wabbr', WABBR_URL.'public/css/wabbr.css', false, WABBR_VERSION, 'screen');
     }
 
     /**
@@ -152,7 +152,7 @@ class Wabbr
      */
     public function registerScripts()
     {
-        wp_register_script('wabbr', WABBR_URL.'assets/js/wabbr.js', null, WABBR_VERSION);
+        wp_register_script('wabbr', WABBR_URL.'public/js/wabbr.js', null, WABBR_VERSION);
 
         if (! empty(self::$instance->gmaps->key) && $key = self::$instance->gmaps->key) {
             wp_register_script('wabbr-gmaps', 'https://maps.googleapis.com/maps/api/js?key='.$key.'&sensor=true', false, WABBR_VERSION, 'screen');
