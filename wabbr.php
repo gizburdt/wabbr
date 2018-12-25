@@ -10,16 +10,16 @@ Author URI:     http://gizburdt.com
 License:        GPL2
 */
 
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
-if (! class_exists('Wabbr')) :
+if (!class_exists('Wabbr')) :
 
 /**
  * Wabbr.
  */
-class Wabbr
+class wabbr
 {
     /**
      * Instance.
@@ -35,7 +35,7 @@ class Wabbr
      */
     public static function instance()
     {
-        if (! isset(self::$instance)) {
+        if (!isset(self::$instance)) {
             self::$instance = new self();
             self::$instance->setupConstants();
             self::$instance->includes();
@@ -52,15 +52,15 @@ class Wabbr
      */
     public function setupConstants()
     {
-        if (! defined('WABBR_VERSION')) {
+        if (!defined('WABBR_VERSION')) {
             define('WABBR_VERSION', '0.2.2');
         }
 
-        if (! defined('WABBR_DIR')) {
+        if (!defined('WABBR_DIR')) {
             define('WABBR_DIR', plugin_dir_path(__FILE__));
         }
 
-        if (! defined('WABBR_URL')) {
+        if (!defined('WABBR_URL')) {
             define('WABBR_URL', plugin_dir_url(__FILE__));
         }
     }
@@ -94,12 +94,12 @@ class Wabbr
     public function addHooks()
     {
         // Styles
-        add_action('wp_enqueue_scripts', array(&$this, 'registerStyles'));
-        add_action('wp_enqueue_scripts', array(&$this, 'enqueueStyles'));
+        add_action('wp_enqueue_scripts', [&$this, 'registerStyles']);
+        add_action('wp_enqueue_scripts', [&$this, 'enqueueStyles']);
 
         // Scripts
-        add_action('wp_enqueue_scripts', array(&$this, 'registerScripts'));
-        add_action('wp_enqueue_scripts', array(&$this, 'enqueueScripts'));
+        add_action('wp_enqueue_scripts', [&$this, 'registerScripts']);
+        add_action('wp_enqueue_scripts', [&$this, 'enqueueScripts']);
     }
 
     /**
@@ -108,19 +108,19 @@ class Wabbr
     public function execute()
     {
         // Wordpress
-        self::$instance->menu       = new WabbrMenu();
-        self::$instance->posts      = new WabbrPosts();
-        self::$instance->table      = new WabbrSidebar();
+        self::$instance->menu = new WabbrMenu();
+        self::$instance->posts = new WabbrPosts();
+        self::$instance->table = new WabbrSidebar();
 
         // HTML
         self::$instance->components = new WabbrComponents();
-        self::$instance->grid       = new WabbrGrid();
-        self::$instance->text       = new WabbrText();
-        self::$instance->button     = new WabbrButton();
-        self::$instance->button     = new WabbrIcon();
-        self::$instance->table      = new WabbrTable();
-        self::$instance->gmaps      = new WabbrGmaps();
-        self::$instance->iframe     = new WabbrIframe();
+        self::$instance->grid = new WabbrGrid();
+        self::$instance->text = new WabbrText();
+        self::$instance->button = new WabbrButton();
+        self::$instance->button = new WabbrIcon();
+        self::$instance->table = new WabbrTable();
+        self::$instance->gmaps = new WabbrGmaps();
+        self::$instance->iframe = new WabbrIframe();
     }
 
     /**
@@ -154,7 +154,7 @@ class Wabbr
     {
         wp_register_script('wabbr', WABBR_URL.'public/js/wabbr.js', null, WABBR_VERSION);
 
-        if (! empty(self::$instance->gmaps->key) && $key = self::$instance->gmaps->key) {
+        if (!empty(self::$instance->gmaps->key) && $key = self::$instance->gmaps->key) {
             wp_register_script('wabbr-gmaps', 'https://maps.googleapis.com/maps/api/js?key='.$key.'&sensor=true', false, WABBR_VERSION, 'screen');
         }
     }
@@ -172,15 +172,16 @@ class Wabbr
 
     /**
      * Localize scripts.
+     *
      * @return [type] [description]
      */
     public function localizeScripts()
     {
-        wp_localize_script('wabbr', 'Wabbr', array(
+        wp_localize_script('wabbr', 'Wabbr', [
             'home_url'   => get_home_url(),
             'ajax_url'   => admin_url('admin-ajax.php'),
-            'wp_version' => get_bloginfo('version')
-        ));
+            'wp_version' => get_bloginfo('version'),
+        ]);
     }
 
     /**
@@ -188,9 +189,10 @@ class Wabbr
      *
      * @param string $view
      * @param array  $variables
+     *
      * @since 3.0
      */
-    public static function view($view, $variables = array())
+    public static function view($view, $variables = [])
     {
         extract($variables);
 

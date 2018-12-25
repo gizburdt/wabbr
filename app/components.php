@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
@@ -11,22 +11,23 @@ class WabbrComponents extends WabbrShortcode
      */
     public function addShortcodes()
     {
-        add_shortcode('block', array(&$this, 'block'));
-        add_shortcode('list-group', array(&$this, 'listGroup'));
+        add_shortcode('block', [&$this, 'block']);
+        add_shortcode('list-group', [&$this, 'listGroup']);
     }
 
     /**
      * Block.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function block($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'class'     => '',
-        ), $atts));
+        ], $atts));
 
         return '<div class="wabbr-block '.$class.'">'.do_shortcode($content).'</div>';
     }
@@ -34,15 +35,16 @@ class WabbrComponents extends WabbrShortcode
     /**
      * List group.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function listGroup($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'class'     => '',
-        ), $atts));
+        ], $atts));
 
         $content = str_replace('<ul>', '<ul class="list-group">', $content);
         $content = str_replace('<li>', '<li class="list-group-item">', $content);

@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
@@ -11,20 +11,21 @@ class WabbrMenu extends WabbrShortcode
      */
     public function addShortcodes()
     {
-        add_shortcode('menu', array(&$this, 'menu'));
-        add_shortcode('submenu', array(&$this, 'submenu'));
+        add_shortcode('menu', [&$this, 'menu']);
+        add_shortcode('submenu', [&$this, 'submenu']);
     }
 
     /**
      * Menu.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function menu($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'theme_location'    => '',
             'name'              => '',
             'container'         => 'div',
@@ -40,12 +41,12 @@ class WabbrMenu extends WabbrShortcode
             'link_after'        => '',
             'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
             'depth'             => 0,
-            'walker'            => ''
-        ), $atts));
+            'walker'            => '',
+        ], $atts));
 
-        $walker = ! empty($walker) ? new $walker() : '';
+        $walker = !empty($walker) ? new $walker() : '';
 
-        return wp_nav_menu(array(
+        return wp_nav_menu([
             'theme_location'  => $theme_location,
             'menu'            => $name,
             'container'       => $container,
@@ -61,15 +62,16 @@ class WabbrMenu extends WabbrShortcode
             'link_after'      => $link_after,
             'items_wrap'      => $items_wrap,
             'depth'           => $depth,
-            'walker'          => $walker
-        ));
+            'walker'          => $walker,
+        ]);
     }
 
     /**
      * Submenu.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function submenu($atts, $content = null)
@@ -78,7 +80,7 @@ class WabbrMenu extends WabbrShortcode
 
         $parent = is_object($post) ? $post->ID : $post;
 
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'class'             => '',
             'authors'           => '',
             'child_of'          => $parent,
@@ -94,12 +96,12 @@ class WabbrMenu extends WabbrShortcode
             'show_date'         => '',
             'sort_column'       => 'menu_order, post_title',
             'title_li'          => '',
-            'walker'            => ''
-        ), $atts));
+            'walker'            => '',
+        ], $atts));
 
-        $walker = ! empty($walker) ? new $walker() : '';
+        $walker = !empty($walker) ? new $walker() : '';
 
-        return '<ul class="wabbr-submenu '.$class.'">'.wp_list_pages(array(
+        return '<ul class="wabbr-submenu '.$class.'">'.wp_list_pages([
             'authors'     => $authors,
             'child_of'    => $child_of,
             'date_format' => $date_format,
@@ -115,6 +117,6 @@ class WabbrMenu extends WabbrShortcode
             'sort_column' => $sort_column,
             'title_li'    => $title_li,
             'walker'      => $walker,
-        )).'</ul>';
+        ]).'</ul>';
     }
 }

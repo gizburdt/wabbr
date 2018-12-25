@@ -1,6 +1,6 @@
 <?php
 
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
     exit;
 }
 
@@ -13,7 +13,7 @@ class WabbrGmaps extends WabbrShortcode
     {
         parent::__construct();
 
-        add_action('wp_head', array(&$this, 'wpHead'));
+        add_action('wp_head', [&$this, 'wpHead']);
     }
 
     /**
@@ -35,22 +35,23 @@ class WabbrGmaps extends WabbrShortcode
      */
     public function addShortcodes()
     {
-        add_shortcode('gmaps', array(&$this, 'gmaps'));
+        add_shortcode('gmaps', [&$this, 'gmaps']);
     }
 
     /**
      * Google maps.
      *
-     * @param  array  $atts
-     * @param  string $content
+     * @param array  $atts
+     * @param string $content
+     *
      * @return string
      */
     public function gmaps($atts, $content = null)
     {
-        extract(shortcode_atts(array(
+        extract(shortcode_atts([
             'key'       => '',
             'class'     => '',
-        ), $atts));
+        ], $atts));
 
         return '<div id="map-canvas"/>';
     }
